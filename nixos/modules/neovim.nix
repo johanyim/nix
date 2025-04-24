@@ -336,5 +336,11 @@ in
       };
     };
 
+    plugins.nvim-surround = {
+      enable = true;
+      luaConfig = {
+        move_cursor = false;
+      };
+    };
   };
 }
