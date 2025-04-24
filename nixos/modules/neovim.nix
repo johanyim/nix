@@ -338,9 +338,11 @@ in
 
     plugins.nvim-surround = {
       enable = true;
-      luaConfig = {
-        move_cursor = false;
-      };
+      luaConfig = ''
+              require("nvim-surround").setup({
+        		move_cursor = false,
+              })
+      '';
     };
   };
 }
