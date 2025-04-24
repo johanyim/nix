@@ -16,6 +16,7 @@
       neofetch
       htop
       hyprpaper
+      bat
     ];
   };
 
