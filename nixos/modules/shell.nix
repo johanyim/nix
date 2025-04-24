@@ -1,6 +1,20 @@
 { pkgs, baseColors, ... }:
 
 {
+  programs.zsh = {
+    enable = true;
+    # enableCompletions = true; 
+    autosuggestions.enable = false;
+    syntaxHighlighting.enable = true;
+    interactiveShellInit = ''
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+      ZVM_VI_HIGHLIGHT_FOREGROUND=black             
+      ZVM_VI_HIGHLIGHT_BACKGROUND=white
+      ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold    
+    '';
+
+  };
 
   programs.starship = {
     enable = true;
@@ -166,20 +180,4 @@
 
     };
   };
-
-  programs.zsh = {
-    enable = true;
-    # enableCompletions = true; 
-    autosuggestions.enable = false;
-    syntaxHighlighting.enable = true;
-    interactiveShellInit = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-      ZVM_VI_HIGHLIGHT_FOREGROUND=black             
-      ZVM_VI_HIGHLIGHT_BACKGROUND=white
-      ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold    
-    '';
-
-  };
-
 }

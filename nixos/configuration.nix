@@ -107,7 +107,6 @@
     mako
     libnotify
 
-    alacritty
     hyprpaper
     # mpvpaper
 
@@ -119,8 +118,6 @@
     home-manager
 
     rustup
-
-    # greetd.tuigreet
 
   ];
 
