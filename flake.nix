@@ -18,13 +18,18 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }@inputs:
     {
 
       nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
