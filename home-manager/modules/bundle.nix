@@ -1,7 +1,8 @@
 {
-	imports = [
-		./hyprland/hyprland.nix
-        ./alacritty.nix
+  imports = [
+    ./hyprland/hyprland.nix
+    ./alacritty.nix
+    ./neovim.nix
 
-	];
+  ];
 }

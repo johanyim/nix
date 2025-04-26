@@ -28,10 +28,9 @@
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
         system = "x86_64-linux";
-        modules = [
-          ./nixos/configuration.nix
-          inputs.nixvim.nixosModules.nixvim
-        ];
+        modules = [ ./nixos/configuration.nix 
+
+];
       };
 
       homeConfigurations.johan = home-manager.lib.homeManagerConfiguration {
@@ -40,7 +39,10 @@
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [ ./home-manager/home.nix ];
+        modules = [
+          ./home-manager/home.nix
+          inputs.nixvim.homeManagerModules.nixvim
+        ];
       };
     };
 }

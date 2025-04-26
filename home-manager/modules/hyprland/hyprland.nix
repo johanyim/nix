@@ -12,17 +12,26 @@ let
 in
 {
 
-  # Wallpaper
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = /home/johan/Downloads/ThinkPadT480Mocha.png  ===CHANGED LOCATION===
-    wallpaper = , /home/johan/Downloads/ThinkPadT480Mocha.png
-    ipc = off
-  '';
+  services.hyprpaper = {
+    enable = true;
+
+    settings = {
+      ipc = "on";
+      splash = false;
+
+      preload = [ "/home/johan/nix/nixos/modules/wallpaper/Stars.png" ];
+
+      wallpaper = [
+        "eDP-1,/home/johan/nix/nixos/modules/wallpaper/Stars.png"
+        # "DP-2,/jome/johan/nix/nixos/modules/wallpaper/Stars.png"
+      ];
+    };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      exec-once = [ "hyprpaper" ];
+      # exec-once = [ "hyprpaper" ];
       env = [
         "NIXOS_OZONE_WL,1"
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -37,9 +46,9 @@ in
       "$menu" = "wofi";
 
       general = {
-        border_size = 3;
-        "col.active_border" = rgb.surface0;
-        "col.inactive_border" = rgb.crust;
+        border_size = 1;
+        "col.active_border" = rgb.lavender;
+        "col.inactive_border" = rgb.surface0;
         gaps_out = 8;
         gaps_in = 4;
 
@@ -127,7 +136,7 @@ in
 
       misc = {
         disable_hyprland_logo = true;
-        background_color = rgb.crust;
+        # background_color = rgb.crust;
         middle_click_paste = false;
 
       };

@@ -6,7 +6,12 @@
   ...
 }:
 {
-  imports = [ ./modules/bundle.nix ];
+	imports = [ 
+		./modules/bundle.nix 
+		# inputs.nixvim.homeManagerModules.nixvim
+	];
+
+	# programs.nixvim.enable = true; 
 
   home = {
     username = "johan";

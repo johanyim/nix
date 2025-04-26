@@ -2,7 +2,7 @@
   imports = [
     ./sound.nix
     ./shell.nix
-    ./neovim.nix
+    # ./neovim.nix
     ./tty.nix
   ];
 }

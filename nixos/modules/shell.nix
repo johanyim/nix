@@ -12,7 +12,20 @@
       ZVM_VI_HIGHLIGHT_FOREGROUND=black             
       ZVM_VI_HIGHLIGHT_BACKGROUND=white
       ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold    
+
+      bindkey "^[[1;5C" forward-word
+      bindkey "^[[1;5D" backward-word
+
+      autoload edit-command-line
+      zle -N edit-command-line
+      bindkey '^Xe' edit-command-line
+
+      eval "$(zoxide init zsh)"
     '';
+    shellAliases = {
+      "ls" = "eza -al";
+      "cd" = "z";
+    };
 
   };
 

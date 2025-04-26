@@ -11,6 +11,11 @@
     "flakes"
   ];
 
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -118,6 +123,9 @@
     home-manager
 
     rustup
+
+    zoxide
+    eza
 
   ];
 
