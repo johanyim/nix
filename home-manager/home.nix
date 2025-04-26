@@ -6,12 +6,15 @@
   ...
 }:
 {
-	imports = [ 
-		./modules/bundle.nix 
-		# inputs.nixvim.homeManagerModules.nixvim
-	];
+  imports = [
+    ./modules/bundle.nix
+    # inputs.nixvim.homeManagerModules.nixvim
+    inputs.zen-browser.homeModules.beta
+  ];
 
-	# programs.nixvim.enable = true; 
+  programs.zen-browser.enable = true;
+
+  # programs.nixvim.enable = true; 
 
   home = {
     username = "johan";

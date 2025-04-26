@@ -47,7 +47,7 @@ in
 
       general = {
         border_size = 1;
-        "col.active_border" = rgb.lavender;
+        "col.active_border" = rgb.overlay0;
         "col.inactive_border" = rgb.surface0;
         gaps_out = 8;
         gaps_in = 4;
@@ -125,6 +125,8 @@ in
 
         "$mod, TAB, togglespecialworkspace"
         "$mod SHIFT, TAB, movetoworkspace, special"
+
+        "$mod, F, fullscreen"
 
         ",XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -10%"
         ",XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +10%"

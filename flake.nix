@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "unstable";
+    };
+
   };
 
   outputs =
@@ -28,9 +33,10 @@
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
         system = "x86_64-linux";
-        modules = [ ./nixos/configuration.nix 
+        modules = [
+          ./nixos/configuration.nix
 
-];
+        ];
       };
 
       homeConfigurations.johan = home-manager.lib.homeManagerConfiguration {
