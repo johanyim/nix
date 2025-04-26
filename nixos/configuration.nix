@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -126,6 +131,10 @@
 
     zoxide
     eza
+
+    # adwaita-icon-theme
+
+    inputs.zen-browser.packages.x86_64-linux.default
 
   ];
 

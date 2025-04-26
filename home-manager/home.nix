@@ -9,7 +9,6 @@
   imports = [
     ./modules/bundle.nix
     # inputs.nixvim.homeManagerModules.nixvim
-    # inputs.zen-browser.homeModules.beta
   ];
 
   home = {
@@ -21,7 +20,6 @@
       htop
       hyprpaper
       bat
-      zen-browser.packages.x86_64-linux.specific
     ];
   };
 
