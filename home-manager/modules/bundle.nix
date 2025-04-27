@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hyprland/hyprland.nix
+    ./hyprland.nix
     ./alacritty.nix
     ./neovim.nix
 

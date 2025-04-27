@@ -8,6 +8,7 @@
 {
   imports = [
     ./modules/bundle.nix
+    inputs.hyprland.homeManagerModules.default
     # inputs.nixvim.homeManagerModules.nixvim
   ];
 

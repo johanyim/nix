@@ -10,6 +10,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    # hyprnix.url = "github:hyprland-community/hyprnix";
 
     nixvim = {
       url = "github:nix-community/nixvim";

@@ -53,15 +53,18 @@ in
         "col.inactive_border" = rgb.surface0;
         gaps_out = 8;
         gaps_in = 4;
-
         layout = "master";
       };
 
       master = {
         new_on_top = false;
         new_status = "master";
-        special_scale_factor = 0.8;
+        special_scale_factor = 0.95;
+      };
 
+      animations = {
+        enabled = false;
+        first_launch_animation = false;
       };
 
       animation = [
@@ -69,12 +72,13 @@ in
         "windows, 0"
         "fade, 0"
         "border, 0"
-
       ];
 
       decoration = {
-        shadow_offset = "0 5";
+        rounding = 4;
+        shadow_offset = "0 0";
       };
+
       input = {
         kb_options = "caps:swapescape";
         touchpad = {
@@ -83,11 +87,15 @@ in
       };
 
       bind = [
-
         "$mod CTRL SHIFT, Q, exit,"
         "$mod SHIFT, return, exec, $terminal"
         "$mod SHIFT, C, killactive,"
         "$mod, a, exec, $browser"
+        "$mod, v, togglefloating"
+        "$mod, f, fullscreen"
+
+        "$mod, TAB, togglespecialworkspace"
+        "$mod SHIFT, TAB, movetoworkspace, special"
 
         "$mod, k, layoutmsg, cycleprev"
         "$mod, j, layoutmsg, cyclenext"
@@ -124,11 +132,6 @@ in
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
 
-        "$mod, TAB, togglespecialworkspace"
-        "$mod SHIFT, TAB, movetoworkspace, special"
-
-        "$mod, F, fullscreen"
-
         ",XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -10%"
         ",XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +10%"
         ",XF86AudioMute, exec, pactl -- set-sink-mute 0 toggle"
@@ -137,17 +140,17 @@ in
         ",XF86MonBrightnessUp, exec, brightnessctl s +10%"
       ];
 
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
+
       misc = {
         disable_hyprland_logo = true;
-        # background_color = rgb.crust;
         middle_click_paste = false;
-
         new_window_takes_over_fullscreen = 1;
-
       };
 
     };
   };
-  # security.pam.services/hyprlock = {};
-
 }
