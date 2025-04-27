@@ -109,7 +109,7 @@
       };
 
       font = {
-        size = 9;
+        size = 13;
       };
 
       font.glyph_offset = {

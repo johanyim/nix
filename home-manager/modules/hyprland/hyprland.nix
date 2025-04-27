@@ -48,18 +48,17 @@ in
       "$menu" = "wofi";
 
       general = {
-        border_size = 1;
+        border_size = 2;
         "col.active_border" = rgb.overlay0;
         "col.inactive_border" = rgb.surface0;
         gaps_out = 8;
         gaps_in = 4;
 
         layout = "master";
-
       };
 
       master = {
-        new_on_top = true;
+        new_on_top = false;
         new_status = "master";
         special_scale_factor = 0.8;
 
@@ -142,6 +141,8 @@ in
         disable_hyprland_logo = true;
         # background_color = rgb.crust;
         middle_click_paste = false;
+
+        new_window_takes_over_fullscreen = 1;
 
       };
 
