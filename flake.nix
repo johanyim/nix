@@ -24,24 +24,19 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      zen-browser,
-      ...
-    }@inputs:
+    { nixpkgs, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
 
       nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
+        inherit system;
         specialArgs = {
           inherit inputs;
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
-        system = "x86_64-linux";
-        modules = [
-          ./nixos/configuration.nix
-
-        ];
+        modules = [ ./nixos/configuration.nix ];
       };
 
       homeConfigurations.johan = home-manager.lib.homeManagerConfiguration {
@@ -49,7 +44,7 @@
           inherit inputs;
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        pkgs = nixpkgs.legacyPackages."${system}";
         modules = [
           ./home-manager/home.nix
           inputs.nixvim.homeManagerModules.nixvim

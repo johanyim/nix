@@ -40,9 +40,11 @@ in
         "QT_QPA_PLATFORM,wayland"
       ];
 
+      monitor = [ "eDP-1, 1920x1080@60, 0x0, 1.0" ];
+
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
-      "$browser" = "firefox";
+      "$browser" = "zen";
       "$menu" = "wofi";
 
       general = {

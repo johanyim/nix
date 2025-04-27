@@ -114,7 +114,7 @@
      plugins.lsp-format.enable = true;
      plugins.lsp = {
        enable = true;
-       inlayHints = true;
+       # inlayHints = true;
        servers = {
          nixd = {
            enable = true;
