@@ -75,9 +75,9 @@
   fonts = {
 
     packages = [
-      # pkgs.nerd-fonts.noto-fonts
-      pkgs.nerd-fonts.droid-sans-mono
-      pkgs.noto-fonts
+      pkgs.nerd-fonts.noto
+      # pkgs.nerd-fonts.droid-sans-mono
+      # pkgs.noto-fonts
       # noto-fonts
     ];
 
@@ -100,7 +100,8 @@
 
     packages = with pkgs; [
       fastfetch
-      nerdfonts
+      nerd-fonts.noto
+      # nerd-fonts.droid-sans-mono
     ];
   };
 
