@@ -75,8 +75,8 @@
   fonts = {
 
     packages = with pkgs; [
-      nerdfonts
-      noto-fonts
+      # nerd-fonts.noto-fonts
+      # noto-fonts
     ];
 
     fontconfig = {

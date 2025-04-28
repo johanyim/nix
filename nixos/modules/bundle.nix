@@ -1,6 +1,6 @@
 {
   imports = [
-    ./sound.nix
+    # ./sound.nix
     ./shell.nix
     # ./neovim.nix
     ./tty.nix
