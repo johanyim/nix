@@ -25,6 +25,24 @@
     ];
   };
 
+  catppuccin.flavor = "mocha";
+  catppuccin.gtk = {
+    enable = true;
+    flavor = "mocha";
+    accent = "lavender";
+    size = "standard";
+    tweaks = [ "normal" ];
+  };
+
+  catppuccin.cursors = {
+    enable = true;
+    accent = "dark";
+  };
+
+  gtk = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "johanyim";
@@ -40,8 +58,10 @@
       init.defaultBranch = "main";
     };
     aliases = {
-      "lg1" = "log --abbrev-commit --decorate --format=format:'%C(bold yellow)[%as]: %C(reset)%C(bold blue)%h%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset) %C(dim black)[%ah]:%C(reset)' --all";
-      "lg2" = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+      "lg1" =
+        "log --abbrev-commit --decorate --format=format:'%C(bold yellow)[%as]: %C(reset)%C(bold blue)%h%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset) %C(dim black)[%ah]:%C(reset)' --all";
+      "lg2" =
+        "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
       "lg" = "lg1";
       "wdiff" = "diff --word-diff=color";
       "wdiff2" = "diff --word-diff";

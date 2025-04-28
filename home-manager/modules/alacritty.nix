@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       # dynamic_title = true
-      live_config_reload = true;
+      general.live_config_reload = true;
       # unfocused_hollow = true
 
       colors.indexed_colors = [
@@ -103,7 +103,7 @@
       };
 
       env = {
-        # TERM = "xterm-256color" 
+        # TERM = "xterm-256color"
         # TERM = "alacritty"
         TERM = "alacritty-direct";
       };
@@ -119,6 +119,7 @@
 
       font = {
         normal = {
+          # family = "NotoSansM Nerd Font";
           family = "NotoSansM Nerd Font";
           style = "Regular";
         };

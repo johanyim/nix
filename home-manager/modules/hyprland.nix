@@ -3,11 +3,13 @@
   lib,
   pkgs,
   baseColors,
+  wallpaperPath,
   ...
 }:
 
 let
   rgb = lib.mapAttrs (name: hex: "rgb(${hex})") baseColors;
+  wallpaper = ./../../wallpaper/CatppuccinMocha-Kurzgesagt-Galaxy3.png;
 
 in
 {
@@ -19,17 +21,20 @@ in
       ipc = "on";
       splash = false;
 
-      preload = [ "/home/johan/nix/nixos/modules/wallpaper/Stars.png" ];
+      preload = [ wallpaper ];
 
       wallpaper = [
-        "eDP-1,/home/johan/nix/nixos/modules/wallpaper/Stars.png"
-        # "DP-2,/jome/johan/nix/nixos/modules/wallpaper/Stars.png"
+        "eDP-1,${wallpaper}"
       ];
     };
   };
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.hyprland;
+
+    xwayland.enable = true;
+
     settings = {
       # exec-once = [ "hyprpaper" ];
       env = [
@@ -76,7 +81,6 @@ in
 
       decoration = {
         rounding = 4;
-        shadow_offset = "0 0";
       };
 
       input = {

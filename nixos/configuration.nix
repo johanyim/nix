@@ -75,10 +75,12 @@
   fonts = {
 
     packages = [
-      pkgs.nerd-fonts.noto
+      # pkgs.nerd-fonts.noto-fonts
       # pkgs.nerd-fonts.droid-sans-mono
       # pkgs.noto-fonts
-      # noto-fonts
+      pkgs.nerdfonts
+      pkgs.noto-fonts
+
     ];
 
     fontconfig = {
@@ -100,7 +102,9 @@
 
     packages = with pkgs; [
       fastfetch
-      nerd-fonts.noto
+      # nerd-fonts.noto
+      nerdfonts
+      noto-fonts
       # nerd-fonts.droid-sans-mono
     ];
   };
@@ -134,11 +138,6 @@
 
     zoxide
     eza
-
-    # adwaita-icon-theme
-
-    # inputs.zen-browser.packages.x86_64-linux.default
-
   ];
 
   # Enable the OpenSSH daemon.
