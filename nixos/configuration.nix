@@ -74,8 +74,10 @@
 
   fonts = {
 
-    packages = with pkgs; [
-      # nerd-fonts.noto-fonts
+    packages = [
+      # pkgs.nerd-fonts.noto-fonts
+      pkgs.nerd-fonts.droid-sans-mono
+      pkgs.noto-fonts
       # noto-fonts
     ];
 
