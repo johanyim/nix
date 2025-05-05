@@ -4,13 +4,13 @@
   pkgs,
   baseColors,
   wallpaperPath,
+  self,
   ...
 }:
 
 let
   rgb = lib.mapAttrs (name: hex: "rgb(${hex})") baseColors;
-  wallpaper = ./../../wallpaper/CatppuccinMocha-Kurzgesagt-Galaxy3.png;
-
+  wallpaper = self + "/wallpaper/CatppuccinMocha-Kurzgesagt-Galaxy3.png";
 in
 {
 
@@ -36,7 +36,7 @@ in
     xwayland.enable = true;
 
     settings = {
-      # exec-once = [ "hyprpaper" ];
+      exec-once = [ "waybar" ];
       env = [
         "NIXOS_OZONE_WL,1"
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -80,7 +80,14 @@ in
       ];
 
       decoration = {
-        rounding = 4;
+        rounding = 8;
+
+        shadow = {
+          enabled = false;
+        };
+
+        # inactive_opacity = 0.7;
+
       };
 
       input = {
@@ -95,6 +102,7 @@ in
         "$mod SHIFT, return, exec, $terminal"
         "$mod SHIFT, C, killactive,"
         "$mod, a, exec, $browser"
+        "$mod, p, exec, $menu"
         "$mod, v, togglefloating"
         "$mod, f, fullscreen"
 
@@ -136,12 +144,12 @@ in
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
 
-        ",XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -10%"
-        ",XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +10%"
+        ",XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -5%"
+        ",XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +5%"
         ",XF86AudioMute, exec, pactl -- set-sink-mute 0 toggle"
         ",XF86AudioMicMute, exec, pactl -- set-source-mute 0 toggle"
-        ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-        ",XF86MonBrightnessUp, exec, brightnessctl s +10%"
+        ",XF86MonBrightnessDown, exec, brightnessctl s 5%-"
+        ",XF86MonBrightnessUp, exec, brightnessctl s +5%"
       ];
 
       bindm = [

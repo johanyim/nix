@@ -71,9 +71,30 @@ in
         action = "<cmd>Oil<CR>";
         options = {
           silent = true;
-          desc = "󰏇 Oil";
+          desc = "Open Oil";
         };
       }
+      {
+        mode = "n";
+        key = "<C-y>";
+        action = ''"*y :let @+=@*<CR>'';
+        options = {
+          silent = true;
+          desc = "Copy to clipboard (normal)";
+        };
+      }
+      {
+        mode = "v";
+        key = "<C-y>";
+        action = ''"*y :let @+=@*<CR>'';
+        options = {
+          silent = true;
+          desc = "Copy to clipboard (normal)";
+        };
+      }
+
+      #       set("n", "<C-y>", '"*y :let @+=@*<CR>', { noremap = true, desc = "Copy to clipboard" })
+      # set("v", "<C-y>", '"*y :let @+=@*<CR>', { noremap = true, desc = "Copy to clipboard" })
     ];
 
     plugins.web-devicons.enable = true;
@@ -259,7 +280,7 @@ in
           right = "";
         };
 
-        #[ 
+        #[
         #{"filetype"
         #{ icon = { align = "right"; }; }
         #]

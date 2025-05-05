@@ -22,6 +22,7 @@
       hyprpaper
       bat
       inputs.zen-browser.packages."${system}".default
+      wofi
     ];
   };
 

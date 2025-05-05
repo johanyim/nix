@@ -74,12 +74,17 @@
 
   fonts = {
 
-    packages = [
-      # pkgs.nerd-fonts.noto-fonts
-      # pkgs.nerd-fonts.droid-sans-mono
-      # pkgs.noto-fonts
-      pkgs.nerdfonts
-      pkgs.noto-fonts
+    packages = with pkgs; [
+      # nerd-fonts.noto-fonts
+      # nerd-fonts.droid-sans-mono
+      nerdfonts
+      noto-fonts
+      miracode
+      departure-mono
+      monoid
+      monaspace
+      mononoki
+      monocraft
 
     ];
 
@@ -138,6 +143,10 @@
 
     zoxide
     eza
+
+    wl-clipboard
+    qutebrowser
+
   ];
 
   # Enable the OpenSSH daemon.

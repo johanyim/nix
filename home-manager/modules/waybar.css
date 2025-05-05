@@ -1,0 +1,197 @@
+@import "theme.css";
+
+* {
+    min-height: 0;
+    border: none;
+    margin: 0;
+    padding: 0;
+    /* font-family: "NotoSansM Nerd Font"; */
+    /* font-family: "Monaspace Krypton"; */
+    font-family: "Departure Mono";
+    /* font-family: "Monocraft Nerd Font"; */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+box#life,
+box#controls,
+box#connections,
+box#usage,
+box#state,
+#workspaces,
+#clock
+{
+    background: @crust;
+    border: 2px solid @surface2;
+    padding: 0 8px;
+    border-radius: 8px
+}
+
+
+#cpu {
+    letter-spacing: 4px;
+    min-width: 140px;
+}
+
+/* box#life:hover, */
+/* box#controls:hover, */
+/* box#connections:hover, */
+/* #workspaces:hover, */
+/* #clock:hover */
+/* { */
+/*     transition-duration: 500ms; */
+/*     background: @base; */
+/*     border: 2px solid @overlay2; */
+/* } */
+
+
+
+
+
+/* .modules-right { */
+/*     gap: 30px; */
+/* } */
+
+window#waybar>box {
+    margin: 4px 8px 0 8px;
+}
+
+
+window#waybar {
+    background: none;
+}
+
+#workspaces {
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 4px;
+    color: @overlay0;
+}
+
+#workspaces button.active {
+    background: @base;
+    color: @lavender;
+    border-radius: 8px;
+}
+
+#workspaces button.empty {
+    color: @surface0;
+}
+
+#workspaces button.empty.active {
+    color: @subtext0;
+}
+
+
+
+#backlight  {
+    color: @lavender
+}
+
+
+
+#disk  {
+    color: @subtext0
+}
+
+#memory  {
+    color: @lavender
+}
+
+
+
+
+
+#pulseaudio  {
+    color: @lavender
+}
+
+
+#pulseaudio.muted  {
+    color: @overlay0
+}
+
+#network 
+{
+    color: @lavender
+}
+
+#network.disabled,
+#network.disconnected
+{
+    color: @overlay0
+}
+
+
+
+
+#bluetooth.disabled,
+#bluetooth.off
+{
+    color: @overlay0;
+}
+
+#bluetooth.no-controller 
+{
+    color: @overlay2;
+}
+
+#bluetooth,
+#bluetooth.on
+{
+    color: @subtext0;
+}
+
+#bluetooth.connected,
+#bluetooth.discoverable,
+#bluetooth.discovering,
+#bluetooth.pairable {
+    color: @blue;
+}
+
+
+
+
+
+#battery.charging {
+    color: @lavender;
+}
+
+#battery {
+    color: @lavender;
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+}
+
+
+
+#temperature {
+    color: @subtext0;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+#cpu {
+    color: @text;
+}
+
+
+
+
+
+
+
+#clock  {
+    color: @subtext0;
+}
+
