@@ -124,9 +124,9 @@
     firefox
     git
     vim
-    waybar
+    # waybar
 
-    mako
+    # mako
     libnotify
 
     hyprpaper
@@ -134,8 +134,6 @@
 
     pulseaudio
     brightnessctl
-
-    rofi-wayland
 
     home-manager
 
@@ -146,6 +144,8 @@
 
     wl-clipboard
     qutebrowser
+
+    killall
 
   ];
 

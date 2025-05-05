@@ -10,7 +10,8 @@
 
 let
   rgb = lib.mapAttrs (name: hex: "rgb(${hex})") baseColors;
-  wallpaper = self + "/wallpaper/CatppuccinMocha-Kurzgesagt-Galaxy3.png";
+  # wallpaper = self + "/wallpaper/CatppuccinMocha-Kurzgesagt-Galaxy3.png";
+  wallpaper = self + "/wallpaper/pixel-galaxy.png";
 in
 {
 
@@ -50,7 +51,7 @@ in
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
       "$browser" = "zen";
-      "$menu" = "wofi";
+      "$menu" = "rofi";
 
       general = {
         border_size = 2;
@@ -102,12 +103,18 @@ in
         "$mod SHIFT, return, exec, $terminal"
         "$mod SHIFT, C, killactive,"
         "$mod, a, exec, $browser"
-        "$mod, p, exec, $menu"
+        "$mod, p, exec, $menu -show drun"
         "$mod, v, togglefloating"
         "$mod, f, fullscreen"
 
-        "$mod, TAB, togglespecialworkspace"
-        "$mod SHIFT, TAB, movetoworkspace, special"
+        "$mod, TAB, workspace, previous"
+
+        # toggle bar
+        "$mod, B, exec, killall -SIGUSR1 .waybar-wrapped || waybar"
+
+        # I'll have to think about what to do with this
+        # "$mod, TAB, togglespecialworkspace"
+        # "$mod SHIFT, TAB, movetoworkspace, special"
 
         "$mod, k, layoutmsg, cycleprev"
         "$mod, j, layoutmsg, cyclenext"
@@ -156,6 +163,10 @@ in
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+
+      binds = {
+        allow_workspace_cycles = true;
+      };
 
       misc = {
         disable_hyprland_logo = true;
