@@ -9,6 +9,8 @@ let
   rgb = lib.mapAttrs (name: hex: "#${hex}") baseColors;
 in
 {
+
+  imports = [ ./keymaps.nix ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
@@ -64,39 +66,6 @@ in
       termguicolors = true;
     };
 
-    keymaps = [
-      {
-        mode = "n";
-        key = "-";
-        action = "<cmd>Oil<CR>";
-        options = {
-          silent = true;
-          desc = "Open Oil";
-        };
-      }
-      {
-        mode = "n";
-        key = "<C-y>";
-        action = ''"*y :let @+=@*<CR>'';
-        options = {
-          silent = true;
-          desc = "Copy to clipboard (normal)";
-        };
-      }
-      {
-        mode = "v";
-        key = "<C-y>";
-        action = ''"*y :let @+=@*<CR>'';
-        options = {
-          silent = true;
-          desc = "Copy to clipboard (normal)";
-        };
-      }
-
-      #       set("n", "<C-y>", '"*y :let @+=@*<CR>', { noremap = true, desc = "Copy to clipboard" })
-      # set("v", "<C-y>", '"*y :let @+=@*<CR>', { noremap = true, desc = "Copy to clipboard" })
-    ];
-
     plugins.web-devicons.enable = true;
 
     plugins.oil = {
@@ -107,22 +76,6 @@ in
           "size"
           "icon"
         ];
-        keymaps = {
-          "g?" = "actions.show_help";
-          "<CR>" = "actions.select";
-          "<C-s>" = "actions.select_vsplit";
-          "<C-h>" = "actions.select_split";
-          "<C-t>" = "actions.select_tab";
-          "<C-p>" = "actions.preview";
-          "<C-c>" = "actions.close";
-          "<C-l>" = "actions.refresh";
-          "-" = "actions.parent";
-          "_" = "actions.open_cwd";
-          "`" = "actions.cd";
-          "~" = "actions.tcd";
-          "gs" = "actions.change_sort";
-          "g." = "actions.toggle_hidden";
-        };
 
         experimental_watch_for_changes = true;
         view_options = {
@@ -131,8 +84,8 @@ in
 
       };
     };
-
     plugins.lsp-format.enable = true;
+
     plugins.lsp = {
       enable = true;
       inlayHints = true;
@@ -146,18 +99,26 @@ in
             };
           };
         };
+
+        # rust_analyzer = {
+        #   enable = true;
+        #   filetypes = [ "rust" ];
+        # };
+
       };
+
     };
 
     plugins.cmp = {
+
       enable = true;
       autoEnableSources = true;
       settings = {
         sources = [
-          { name = "nvim-lsp"; }
+          { name = "nvim_lsp"; }
           { name = "path"; }
-          { name = "buffer"; }
           { name = "luasnip"; }
+          { name = "buffer"; }
         ];
 
         mapping = {
@@ -194,10 +155,17 @@ in
             hl_group = "GhostText";
           };
         };
-
       };
 
     };
+
+    plugins.cmp-nvim-lsp.enable = true;
+    plugins.cmp-buffer.enable = true;
+    plugins.cmp-path.enable = true;
+    plugins.cmp-cmdline.enable = true;
+    plugins.cmp_luasnip.enable = true;
+    plugins.luasnip.enable = true;
+    plugins.friendly-snippets.enable = true;
 
     plugins.lualine = {
       enable = true;
@@ -345,13 +313,6 @@ in
             fg = rgb.surface0;
           };
 
-          GhostText = {
-            fg = rgb.surface1;
-          };
-          LspInlayHint = {
-            fg = rgb.surface1;
-          };
-
           DiagnosticVirtualTextError = {
             fg = rgb.red;
           };
@@ -365,6 +326,45 @@ in
             fg = rgb.teal;
           };
 
+          GhostText = {
+            fg = rgb.surface1;
+          };
+          LspInlayHint = {
+            fg = rgb.surface1;
+            bg = "";
+          };
+
+        };
+      };
+    };
+
+    plugins.treesitter = {
+      enable = true;
+      # folding = true;
+      settings = {
+        ensure_installed = [
+          "rust"
+          "markdown"
+          "nix"
+        ];
+        highlight.enable = true;
+        indent.enable = true;
+        auto_install = true;
+        sync_install = true;
+        plugins.treesitter.nixvimInjections = true;
+      };
+    };
+
+    plugins.colorizer = {
+      enable = true;
+      settings = {
+        user_default_options = {
+          tailwind = true;
+          css = true;
+          RGB = true;
+          RRGGBB = true;
+          RRGGBBAA = true;
+
         };
       };
     };
@@ -375,5 +375,234 @@ in
         move_cursor = false;
       };
     };
+
+    plugins.lsp-lines = {
+      enable = true;
+      luaConfig.content = ''
+              local lines = require("lsp_lines")
+        		lines.setup({})
+
+        		local diagnostics_active = true
+        		vim.diagnostic.config({
+        			virtual_lines = false,
+        			virtual_text = true,
+        		})
+
+        		vim.keymap.set("n", "<leader>d", function()
+        			if diagnostics_active then
+        				vim.diagnostic.config({
+        					virtual_text = false,
+        					virtual_lines = true,
+        				})
+        			else
+        				vim.diagnostic.config({
+        					virtual_text = true,
+        					virtual_lines = false,
+        				})
+        			end
+        			diagnostics_active = not diagnostics_active
+        		end)
+
+      '';
+
+    };
+    plugins.efmls-configs = {
+      setup = {
+        all.linter = [ "codespell" ];
+        bash.formatter = [ "beautysh" ];
+        # c = {
+        #   formatter = [ "clang_tidy" ];
+        #   linter = [ "clang_tidy" ];
+        # };
+        # "c++" = {
+        #   formatter = [ "clang_tidy" ];
+        #   linter = [ "clang_tidy" ];
+        # };
+        # cmake = {
+        #   formatter = [ "gersemi" ];
+        #   linter = [ "cmake_lint" ];
+        # };
+        css = {
+          formatter = [ "prettier" ];
+          linter = [ "proselint" ];
+        };
+        gitcommit.linter = [ "gitlint" ];
+        html = {
+          formatter = [ "prettier" ];
+          linter = [ "proselint" ];
+        };
+        lua = {
+          formatter = [ "lua_format" ];
+          linter = [ "luacheck" ];
+        };
+        markdown = {
+          formatter = [ "mdformat" ];
+          linter = [ "proselint" ];
+        };
+        nix = {
+          formatter = [ "nixfmt" ];
+          linter = [ "statix" ];
+        };
+        python = {
+          formatter = [ "black" ];
+          linter = [ "ruff" ];
+        };
+        rust.formatter = [ "rustfmt" ];
+        vim.linter = [ "vint" ];
+        zsh.formatter = [ "beautysh" ];
+      };
+    };
+
+    plugins.rustaceanvim = {
+      enable = true;
+      settings = {
+        server = {
+          default_settings = {
+            rust-analyzer = {
+              check = {
+                command = "clippy";
+              };
+              inlayHints = {
+                lifetimeElisionHints = {
+                  enable = "always";
+                };
+                typeHints = {
+                  enable = false;
+                  hideExplicitlyTyped = true;
+                };
+                renderColons = true;
+              };
+            };
+          };
+        };
+      };
+    };
+
+    # plugins.rust-tools = {
+    #   enable = true;
+    #
+    #   inlayHints = {
+    #     auto = false;
+    #     onlyCurrentLine = false;
+    #     showParameterHints = true;
+    #     parameterHintsPrefix = "<= ";
+    #     otherHintsPrefix = "-> ";
+    #     maxLenAlign = false;
+    #     maxLenAlignPadding = 1;
+    #     rightAlign = false;
+    #     rightAlignPadding = 3;
+    #     highlight = "LspInlayHint";
+    #   };
+    #
+    #   hoverActions = {
+    #     border = [
+    #       # [
+    #       #   "┏"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "━"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "┓"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "┃"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "┛"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "━"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "┗"
+    #       #   "FloatBorder"
+    #       # ]
+    #       # [
+    #       #   "┃"
+    #       #   "FloatBorder"
+    #       # ]
+    #
+    #     ];
+    #     autoFocus = false;
+    #
+    #   };
+    # };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      # rust-vim
+      # rust-tools-nvim
+      # nvim-lsp-endhints
+
+    ];
+
   };
 }
+
+# return {
+# 	{
+# 		"simrat39/rust-tools.nvim",
+# 		config = function()
+# 			local rt = require("rust-tools")
+#
+# 			rt.setup({
+# 				tools = {
+# 					inlay_hints = {
+# 						auto = true,
+# 						only_current_line = false,
+# 						show_parameter_hints = true,
+# 						parameter_hints_prefix = "<= ",
+# 						other_hints_prefix = "-> ",
+# 						max_len_align = false,
+# 						max_len_align_padding = 1,
+# 						right_align = false,
+# 						right_align_padding = 3,
+# 						highlight = "LspInlayHint",
+# 					},
+# 					hover_actions = {
+# 						border = {
+# 							{ "┏", "FloatBorder" },
+# 							{ "━", "FloatBorder" },
+# 							{ "┓", "FloatBorder" },
+# 							{ "┃", "FloatBorder" },
+# 							{ "┛", "FloatBorder" },
+# 							{ "━", "FloatBorder" },
+# 							{ "┗", "FloatBorder" },
+# 							{ "┃", "FloatBorder" },
+# 						},
+# 						auto_focus = false,
+# 					},
+# 				},
+# 				server = {
+# 					on_attach = function(_, bufnr)
+# 						-- Info and documentation + Hover actions
+# 						-- vim.lsp.inlay_hint.enable(false)
+# 					end,
+# 				},
+# 			})
+# 			rt.inlay_hints.enable()
+# 		end,
+# 	},
+# 	{
+# 		"rust-lang/rust.vim",
+# 		ft = "rust",
+# 		init = function()
+# 			vim.g.rustfmt_autosave = 1
+# 		end,
+# 	},
+# 	{
+# 		"vxpm/ferris.nvim",
+# 		ft = { "rust" },
+# 		opts = {
+# 			-- your options here
+# 		},
+# 	},
+#
+# 	"saecki/crates.nvim",
+# }

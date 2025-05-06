@@ -147,6 +147,8 @@
 
     killall
 
+    gcc
+
   ];
 
   # Enable the OpenSSH daemon.

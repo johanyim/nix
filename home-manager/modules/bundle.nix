@@ -2,7 +2,7 @@
   imports = [
     ./hyprland.nix
     ./alacritty.nix
-    ./nixvim.nix
+    ./nixvim
     ./waybar.nix
     ./mako.nix
     ./git.nix

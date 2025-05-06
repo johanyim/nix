@@ -113,8 +113,8 @@ in
         "$mod, B, exec, killall -SIGUSR1 .waybar-wrapped || waybar"
 
         # I'll have to think about what to do with this
-        # "$mod, TAB, togglespecialworkspace"
-        # "$mod SHIFT, TAB, movetoworkspace, special"
+        "$mod, z, togglespecialworkspace"
+        "$mod SHIFT, z, movetoworkspace, special"
 
         "$mod, k, layoutmsg, cycleprev"
         "$mod, j, layoutmsg, cyclenext"
