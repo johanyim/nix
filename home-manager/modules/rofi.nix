@@ -55,7 +55,7 @@ in
 
         border = 2;
         border-radius = 8;
-        border-color = mkLiteral hex.lavender;
+        border-color = mkLiteral hex.overlay0;
       };
 
       mainbox = {

@@ -129,7 +129,7 @@
     # mako
     libnotify
 
-    hyprpaper
+    # hyprpaper
     # mpvpaper
 
     pulseaudio

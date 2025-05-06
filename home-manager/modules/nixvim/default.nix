@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   baseColors,
@@ -10,10 +9,22 @@ let
 in
 {
 
-  imports = [ ./keymaps.nix ];
+  imports = [
+    ./keymaps.nix
+    ./ftplugin
+  ];
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
+
+    performance = {
+      byteCompileLua = {
+        enable = true;
+        nvimRuntime = true;
+        configs = true;
+        plugins = true;
+      };
+    };
 
     globals = {
       mapleader = ",";
@@ -26,7 +37,6 @@ in
       autowrite = true;
       cursorline = true;
       cursorcolumn = true;
-      autoread = true;
       history = 10000;
       showmode = false;
 
@@ -64,6 +74,22 @@ in
 
       # use term gui colors
       termguicolors = true;
+
+      # Set completeopt to have a better completion experience
+      completeopt = [
+        "menuone"
+        "noselect"
+        "noinsert"
+      ]; # mostly just for cmp
+
+      # Enable persistent undo history
+      swapfile = false;
+      autoread = true;
+      backup = false;
+      undofile = true;
+
+      encoding = "utf-8";
+      fileencoding = "utf-8";
     };
 
     plugins.web-devicons.enable = true;
@@ -376,36 +402,8 @@ in
       };
     };
 
-    plugins.lsp-lines = {
-      enable = true;
-      luaConfig.content = ''
-              local lines = require("lsp_lines")
-        		lines.setup({})
+    plugins.lsp-lines.enable = true;
 
-        		local diagnostics_active = true
-        		vim.diagnostic.config({
-        			virtual_lines = false,
-        			virtual_text = true,
-        		})
-
-        		vim.keymap.set("n", "<leader>d", function()
-        			if diagnostics_active then
-        				vim.diagnostic.config({
-        					virtual_text = false,
-        					virtual_lines = true,
-        				})
-        			else
-        				vim.diagnostic.config({
-        					virtual_text = true,
-        					virtual_lines = false,
-        				})
-        			end
-        			diagnostics_active = not diagnostics_active
-        		end)
-
-      '';
-
-    };
     plugins.efmls-configs = {
       setup = {
         all.linter = [ "codespell" ];

@@ -72,12 +72,14 @@ in
         memory = {
           interval = 30;
           format = " {}%";
+          tooltip-format = "{used}GiB/{total}GiB";
           max-length = 10;
         };
 
         disk = {
-          interval = 30;
+          interval = 1800;
           format = " 󰻂 {percentage_used}%";
+          tooltip-format = "{used}/{total}";
           path = "/";
         };
 
