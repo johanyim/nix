@@ -105,6 +105,8 @@
     ];
   };
 
+  programs.zsh.enable = true;
+
   # programs.hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -128,7 +130,8 @@
 
     killall
 
-    # transmission # this causes transmission gtk to break
+    # transmission # this causes transmission-gtk to break
+    # because it uses the same port to listen for peers
     transmission-gtk
   ];
 

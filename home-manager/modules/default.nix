@@ -1,14 +1,15 @@
 { ... }:
 {
   imports = [
-    ./hyprland.nix
-    ./alacritty.nix
-    ./nixvim
-    ./tmux
-    ./waybar.nix
-    ./mako.nix
-    ./git.nix
-    ./rofi.nix
     ./firefox
+    ./nixvim
+    ./shell
+    ./tmux
+    ./alacritty.nix
+    ./git.nix
+    ./hyprland.nix
+    ./mako.nix
+    ./rofi.nix
+    ./waybar.nix
   ];
 }

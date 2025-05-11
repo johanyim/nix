@@ -1,48 +1,12 @@
-{ pkgs, ... }:
-
 {
-  programs.zsh = {
-    enable = true;
-    # enableCompletions = true;
-    autosuggestions.enable = false;
-    syntaxHighlighting.enable = true;
-    interactiveShellInit = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-      ZVM_VI_HIGHLIGHT_FOREGROUND=black             
-      ZVM_VI_HIGHLIGHT_BACKGROUND=white
-      ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold    
-
-      bindkey "^[[1;5C" forward-word
-      bindkey "^[[1;5D" backward-word
-
-      autoload edit-command-line
-      zle -N edit-command-line
-      bindkey '^Xe' edit-command-line
-
-      zstyle ':completion:*' menu select
-      zmodload zsh/complist
-
-
-      # show hidden files
-      setopt globdots
-
-      # use the vi navigation keys in menu completion
-      bindkey -M menuselect 'h' vi-backward-char
-      bindkey -M menuselect 'k' vi-up-line-or-history
-      bindkey -M menuselect 'l' vi-forward-char
-      bindkey -M menuselect 'j' vi-down-line-or-history
-
-      eval "$(zoxide init zsh)"
-    '';
-    shellAliases = {
-      "ls" = "eza -al";
-      "cd" = "z";
-      "t" = "tmux a";
-    };
-
-  };
-
+  baseColors,
+  lib,
+  ...
+}:
+let
+  hex = lib.mapAttrs (name: color: "#${color}") baseColors;
+in
+{
   programs.starship = {
     enable = true;
     settings = {
@@ -177,32 +141,32 @@
       };
 
       palettes."catppuccin_mocha" = {
-        rosewater = "#f5e0dc";
-        flamingo = "#f2cdcd";
-        pink = "#f5c2e7";
-        mauve = "#cba6f7";
-        red = "#f38ba8";
-        maroon = "#eba0ac";
-        peach = "#fab387";
-        yellow = "#f9e2af";
-        green = "#a6e3a1";
-        teal = "#94e2d5";
-        sky = "#89dceb";
-        sapphire = "#74c7ec";
-        blue = "#89b4fa";
-        lavender = "#b4befe";
-        text = "#cdd6f4";
-        subtext1 = "#bac2de";
-        subtext0 = "#a6adc8";
-        overlay2 = "#9399b2";
-        overlay1 = "#7f849c";
-        overlay0 = "#6c7086";
-        surface2 = "#585b70";
-        surface1 = "#45475a";
-        surface0 = "#313244";
-        base = "#1e1e2e";
-        mantle = "#181825";
-        crust = "#11111b";
+        rosewater = "${hex.rosewater}";
+        flamingo = "${hex.flamingo}";
+        pink = "${hex.pink}";
+        mauve = "${hex.mauve}";
+        red = "${hex.red}";
+        maroon = "${hex.maroon}";
+        peach = "${hex.peach}";
+        yellow = "${hex.yellow}";
+        green = "${hex.green}";
+        teal = "${hex.teal}";
+        sky = "${hex.sky}";
+        sapphire = "${hex.sapphire}";
+        blue = "${hex.blue}";
+        lavender = "${hex.lavender}";
+        text = "${hex.text}";
+        subtext1 = "${hex.subtext1}";
+        subtext0 = "${hex.subtext0}";
+        overlay2 = "${hex.overlay2}";
+        overlay1 = "${hex.overlay1}";
+        overlay0 = "${hex.overlay0}";
+        surface2 = "${hex.surface2}";
+        surface1 = "${hex.surface1}";
+        surface0 = "${hex.surface0}";
+        base = "${hex.base}";
+        mantle = "${hex.mantle}";
+        crust = "${hex.crust}";
       };
 
     };
