@@ -7,9 +7,7 @@
 }:
 {
   imports = [
-    ./modules/bundle.nix
-    # inputs.hyprland.homeManagerModules.default
-    # inputs.nixvim.homeManagerModules.nixvim
+    ./modules
   ];
 
   home = {
@@ -17,14 +15,19 @@
     homeDirectory = "/home/johan";
     stateVersion = "23.11";
     packages = with pkgs; [
+      dconf
       neofetch
       htop
       hyprpaper
       bat
       bottom
-      inputs.zen-browser.packages."${system}".default
+      # inputs.zen-browser.packages."${system}".default
       # rofi-wayland
     ];
+  };
+
+  programs.mpv = {
+    enable = true;
   };
 
   catppuccin.flavor = "mocha";

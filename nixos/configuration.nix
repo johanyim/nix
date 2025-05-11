@@ -8,7 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules/bundle.nix
+    ./modules
   ];
 
   nix.settings.experimental-features = [
@@ -73,27 +73,18 @@
   security.rtkit.enable = true;
 
   fonts = {
-
     packages = with pkgs; [
       # nerd-fonts.noto-fonts
       # nerd-fonts.droid-sans-mono
       nerdfonts
       noto-fonts
-      miracode
       departure-mono
-      monoid
-      monaspace
-      mononoki
-      monocraft
-
     ];
-
     fontconfig = {
       defaultFonts = {
         monospace = [ "Noto Sans Mono" ];
       };
     };
-
   };
 
   users.users.johan = {
@@ -114,24 +105,15 @@
     ];
   };
 
-  programs.firefox.enable = true;
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    hyprland
-    firefox
+    # hyprland
     git
-    vim
-    # waybar
-
-    # mako
+    gcc
     libnotify
-
-    # hyprpaper
-    # mpvpaper
-
     pulseaudio
     brightnessctl
 
@@ -143,22 +125,31 @@
     eza
 
     wl-clipboard
-    qutebrowser
 
     killall
 
-    gcc
-
+    # transmission # this causes transmission gtk to break
+    transmission-gtk
   ];
+
+  # services.transmission = {
+  #   enable = true;
+  # };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 51413 ];
+  networking.firewall.allowedUDPPorts = [ 51413 ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+
+  # for ethernet
+  # networking.useDHCP = true;
+
+  # # or if using interfaces directly:
+  # networking.interfaces.enp0s31f6.useDHCP = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

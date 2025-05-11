@@ -1,4 +1,4 @@
-{ pkgs, baseColors, ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -20,11 +20,25 @@
       zle -N edit-command-line
       bindkey '^Xe' edit-command-line
 
+      zstyle ':completion:*' menu select
+      zmodload zsh/complist
+
+
+      # show hidden files
+      setopt globdots
+
+      # use the vi navigation keys in menu completion
+      bindkey -M menuselect 'h' vi-backward-char
+      bindkey -M menuselect 'k' vi-up-line-or-history
+      bindkey -M menuselect 'l' vi-forward-char
+      bindkey -M menuselect 'j' vi-down-line-or-history
+
       eval "$(zoxide init zsh)"
     '';
     shellAliases = {
       "ls" = "eza -al";
       "cd" = "z";
+      "t" = "tmux a";
     };
 
   };

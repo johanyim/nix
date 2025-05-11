@@ -38,12 +38,12 @@ in
         ];
 
         pulseaudio = {
-          "format" = "{icon} {volume}% {format_source}";
-          "format-source" = "<span foreground='${hex.subtext0}'> ON </span>";
-          "format-source-muted" = "<span foreground='${hex.overlay0}'> OFF</span>";
-          "format-muted" = "󰸈 {volume}% {format_source}";
+          format = "{icon} {volume}% {format_source}";
+          format-source = "<span foreground='${hex.subtext0}'> ON </span>";
+          format-source-muted = "<span foreground='${hex.overlay0}'> OFF</span>";
+          format-muted = "󰸈 {volume}% {format_source}";
 
-          "format-icons" = {
+          format-icons = {
             default = [
               "󰕿"
               "󰖀"
@@ -94,30 +94,30 @@ in
         network = {
           format = "{ifname} ";
           format-wifi = "󰖩 {essid} ";
-          format-ethernet = "󰈀 {essid} ";
+          format-ethernet = "󰈀 Ethernet ";
           format-disconnected = "󰖪 None "; # An empty format will hide the module.
-          tooltip-format = "{ifname} via {gwaddr} 󰊗";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ifname} {ipaddr}";
-          tooltip-format-ethernet = "{essid} ({signalStrength}%)\n{ifname} {ipaddr}";
+          tooltip-format = "{ifname}";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ifname} {ipaddr}/{cidr}";
+          tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr}";
           tooltip-format-disconnected = "Disconnected";
           max-length = 20;
         };
 
-        "bluetooth" = {
-          "format" = " {status}";
+        bluetooth = {
+          format = " {status}";
 
-          "format-off" = "󰂲 {status}";
-          "format-no-controller" = "󰂲 {status}";
+          format-off = "󰂲 {status}";
+          format-no-controller = "󰂲 {status}";
 
-          "format-connected" = "󰂰 {device_alias}";
-          "tooltip-format" = "{num_connections} connected";
-          "tooltip-format-connected" = "{num_connections} connected\n{device_enumerate}";
-          "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
+          format-connected = "󰂰 {device_alias}";
+          tooltip-format = "{num_connections} connected";
+          tooltip-format-connected = "{num_connections} connected\n{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
         };
 
-        "cpu" = {
-          "format" = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
-          "format-icons" = [
+        cpu = {
+          format = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
+          format-icons = [
             "<span foreground='${hex.overlay0}'>▁</span>"
             "<span foreground='${hex.text}'>▂</span>"
             "<span foreground='${hex.text}'>▃</span>"
@@ -176,6 +176,7 @@ in
           ];
           weighted_average = true;
           format = "{icon} {capacity}%";
+          format-charging = "󰚥{icon} {capacity}%";
         };
 
         temperature = {

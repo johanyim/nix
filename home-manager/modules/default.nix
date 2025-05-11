@@ -1,3 +1,4 @@
+{ ... }:
 {
   imports = [
     ./hyprland.nix
@@ -8,6 +9,6 @@
     ./mako.nix
     ./git.nix
     ./rofi.nix
-
+    ./firefox
   ];
 }

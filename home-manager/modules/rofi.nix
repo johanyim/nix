@@ -23,7 +23,7 @@ in
     drun-display-format = "{name}";
     disable-history = false;
     hide-scrollbar = false;
-    display-drun = "drun";
+    display-drun = "";
     sidebar-mode = false;
   };
 
@@ -34,18 +34,6 @@ in
     {
 
       "*" = {
-        crust = mkLiteral "#11111b";
-        base = mkLiteral "#1e1e2e";
-        surface0 = mkLiteral "#313244";
-        overlay0 = mkLiteral "#6c7086";
-        text = mkLiteral "#cdd6f4";
-
-        mauve = mkLiteral "#cba6f7";
-        red = mkLiteral "#f38ba8";
-        peach = mkLiteral "#fab387";
-        green = mkLiteral "#a6e3a1";
-        lavender = mkLiteral "#b4befe";
-
         background-color = mkLiteral hex.crust;
       };
 
@@ -68,24 +56,24 @@ in
       };
 
       inputbar = {
-        color = mkLiteral "@text";
+        color = mkLiteral hex.text;
         padding = 14;
-        background-color = mkLiteral "@crust";
+        background-color = mkLiteral hex.crust;
       };
 
       message = {
         padding = mkLiteral "10";
-        background-color = mkLiteral "@overlay0";
+        background-color = mkLiteral hex.overlay0;
       };
 
       listview = {
         border = mkLiteral "2 2 2 2";
-        background-color = mkLiteral "@crust";
+        background-color = mkLiteral hex.crust;
         dynamic = mkLiteral "false";
       };
 
       textbox = {
-        text-color = mkLiteral "@text";
+        text-color = mkLiteral hex.text;
         background-color = mkLiteral "inherit";
       };
 
@@ -99,21 +87,22 @@ in
       };
 
       prompt = {
-        margin = mkLiteral "0 10 0 0";
+        margin = mkLiteral "0 0 0 0";
       };
 
       "element.selected.normal" = {
-        background-color = mkLiteral "@base";
+        background-color = mkLiteral hex.base;
       };
 
       "element-text" = {
         margin = mkLiteral "0 10";
         background-color = mkLiteral "inherit";
-        text-color = mkLiteral "@text";
+        text-color = mkLiteral hex.text;
+        highlight = mkLiteral "bold ${hex.rosewater}";
       };
 
       "element-text .active, element-text .urgent" = {
-        text-color = mkLiteral "@base";
+        text-color = mkLiteral hex.base;
       };
 
     };

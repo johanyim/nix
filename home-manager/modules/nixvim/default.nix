@@ -5,15 +5,17 @@
   ...
 }:
 let
-  rgb = lib.mapAttrs (name: hex: "#${hex}") baseColors;
+  hex = lib.mapAttrs (name: color: "#${color}") baseColors;
 in
 {
 
   imports = [
     ./keymaps.nix
-    ./ftplugin
+    ./ftplugin.nix
+    ./color-highlights.nix
   ];
   programs.nixvim = {
+
     enable = true;
     defaultEditor = true;
 
@@ -200,68 +202,68 @@ in
           # icons_enabled = true;
           normal = {
             a = {
-              fg = rgb.blue;
-              bg = rgb.crust;
+              fg = hex.blue;
+              bg = hex.crust;
             };
             b = {
-              fg = rgb.mauve;
-              bg = rgb.crust;
+              fg = hex.mauve;
+              bg = hex.crust;
             };
             c = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
             x = {
-              fg = rgb.surface0;
-              bg = rgb.crust;
+              fg = hex.surface0;
+              bg = hex.crust;
             };
             y = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
             z = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
           };
           insert = {
             a = {
-              fg = rgb.green;
-              bg = rgb.crust;
+              fg = hex.green;
+              bg = hex.crust;
             };
             z = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
           };
           visual = {
             a = {
-              fg = rgb.mauve;
-              bg = rgb.crust;
+              fg = hex.mauve;
+              bg = hex.crust;
             };
             z = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
           };
           command = {
             a = {
-              fg = rgb.peach;
-              bg = rgb.crust;
+              fg = hex.peach;
+              bg = hex.crust;
             };
             z = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
           };
           replace = {
             a = {
-              fg = rgb.red;
-              bg = rgb.crust;
+              fg = hex.red;
+              bg = hex.crust;
             };
             z = {
-              fg = rgb.surface1;
-              bg = rgb.crust;
+              fg = hex.surface1;
+              bg = hex.crust;
             };
           };
         };
@@ -317,46 +319,46 @@ in
         term_colors = true;
         custom_highlights = {
           Normal = {
-            fg = rgb.text;
-            bg = rgb.crust;
+            fg = hex.text;
+            bg = hex.crust;
           };
           Comment = {
-            fg = rgb.overlay1;
+            fg = hex.overlay1;
             style = { };
           };
           CursorLine = {
-            bg = rgb.mantle;
+            bg = hex.mantle;
           };
           NormalNC = {
-            fg = rgb.text;
-            bg = rgb.crust;
+            fg = hex.text;
+            bg = hex.crust;
           };
           NormalFloat = {
-            fg = rgb.text;
-            bg = rgb.crust;
+            fg = hex.text;
+            bg = hex.crust;
           };
           LineNr = {
-            fg = rgb.surface0;
+            fg = hex.surface0;
           };
 
           DiagnosticVirtualTextError = {
-            fg = rgb.red;
+            fg = hex.red;
           };
           DiagnosticVirtualTextWarning = {
-            fg = rgb.yellow;
+            fg = hex.yellow;
           };
           DiagnosticVirtualTextInfo = {
-            fg = rgb.sapphire;
+            fg = hex.sapphire;
           };
           DiagnosticVirtualTextHint = {
-            fg = rgb.teal;
+            fg = hex.teal;
           };
 
           GhostText = {
-            fg = rgb.surface1;
+            fg = hex.surface1;
           };
           LspInlayHint = {
-            fg = rgb.surface1;
+            fg = hex.surface1;
             bg = "";
           };
 

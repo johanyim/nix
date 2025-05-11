@@ -1,9 +1,7 @@
 {
-  config,
   lib,
   pkgs,
   baseColors,
-  wallpaperPath,
   self,
   ...
 }:
@@ -50,7 +48,7 @@ in
 
       "$mod" = "SUPER";
       "$terminal" = "alacritty";
-      "$browser" = "zen";
+      "$browser" = "firefox";
       "$menu" = "rofi";
 
       general = {
@@ -96,6 +94,9 @@ in
         touchpad = {
           tap-to-click = false;
         };
+
+        focus_on_close = 1;
+
       };
 
       bind = [
@@ -166,14 +167,22 @@ in
 
       binds = {
         allow_workspace_cycles = true;
+        workspace_center_on = 1;
       };
 
       misc = {
         disable_hyprland_logo = true;
         middle_click_paste = false;
         new_window_takes_over_fullscreen = 1;
+        enable_swallow = true;
+        focus_on_activate = true;
       };
 
+      cursor = {
+        warp_on_change_workspace = 1;
+        # warp_on_toggle_special = 1;
+
+      };
     };
   };
 }
