@@ -21,8 +21,6 @@
       hyprpaper
       bat
       bottom
-      # inputs.zen-browser.packages."${system}".default
-      # rofi-wayland
     ];
   };
 

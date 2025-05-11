@@ -10,361 +10,44 @@ in
 {
 
   imports = [
-    ./keymaps.nix
-    ./ftplugin.nix
+    ./plugins
+    ./catppuccin.nix
     ./color-highlights.nix
+    ./ftplugin.nix
+    ./keymaps.nix
+    ./options.nix
   ];
   programs.nixvim = {
 
     enable = true;
     defaultEditor = true;
 
-    performance = {
-      byteCompileLua = {
-        enable = true;
-        nvimRuntime = true;
-        configs = true;
-        plugins = true;
+    plugins.tmux-navigator = {
+      enable = true;
+      settings = {
+        disable_when_zoomed = 1;
       };
-    };
-
-    globals = {
-      mapleader = ",";
-    };
-    opts = {
-      number = true;
-      relativenumber = false;
-      showcmd = true;
-      laststatus = 2;
-      autowrite = true;
-      cursorline = true;
-      cursorcolumn = true;
-      history = 10000;
-      showmode = false;
-
-      # tabs
-      shiftwidth = 4;
-      tabstop = 4;
-      # roud to nearest tabsize
-      shiftround = true;
-      # use spaces for tab
-      expandtab = true;
-
-      # indentations
-      autoindent = true;
-      smartindent = true;
-      # -- read more on this
-      # cindent = true
-
-      hlsearch = true;
-      ignorecase = true;
-      smartcase = true;
-
-      # git signs
-      signcolumn = "yes";
-
-      # tab completion options as a menu
-      wildmenu = true;
-
-      spelllang = "en_gb";
-
-      # space between line and bottom/top of buffer
-      scrolloff = 4;
-      # sidescrolloff= 20
-
-      # TESTING this is a looooooong test this is a looooooong test this is a looooooong test this is a looooooong test this is a looooooong test this is a looooooong test this is a looooooong test this is a looooooong test LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-      # use term gui colors
-      termguicolors = true;
-
-      # Set completeopt to have a better completion experience
-      completeopt = [
-        "menuone"
-        "noselect"
-        "noinsert"
-      ]; # mostly just for cmp
-
-      # Enable persistent undo history
-      swapfile = false;
-      autoread = true;
-      backup = false;
-      undofile = true;
-
-      encoding = "utf-8";
-      fileencoding = "utf-8";
+      keymaps = [
+        {
+          action = "left";
+          key = "<A-h>";
+        }
+        {
+          action = "down";
+          key = "<A-j>";
+        }
+        {
+          action = "up";
+          key = "<A-k>";
+        }
+        {
+          action = "right";
+          key = "<A-l>";
+        }
+      ];
     };
 
     plugins.web-devicons.enable = true;
-
-    plugins.oil = {
-      enable = true;
-      settings = {
-        columns = [
-          "permissions"
-          "size"
-          "icon"
-        ];
-
-        experimental_watch_for_changes = true;
-        view_options = {
-          show_hidden = true;
-        };
-
-      };
-    };
-    plugins.lsp-format.enable = true;
-
-    plugins.lsp = {
-      enable = true;
-      inlayHints = true;
-      servers = {
-        nixd = {
-          enable = true;
-          filetypes = [ "nix" ];
-          settings = {
-            formatting = {
-              command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-            };
-          };
-        };
-
-        # rust_analyzer = {
-        #   enable = true;
-        #   filetypes = [ "rust" ];
-        # };
-
-      };
-
-    };
-
-    plugins.cmp = {
-
-      enable = true;
-      autoEnableSources = true;
-      settings = {
-        sources = [
-          { name = "nvim_lsp"; }
-          { name = "path"; }
-          { name = "luasnip"; }
-          { name = "buffer"; }
-        ];
-
-        mapping = {
-          "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.abort()";
-          # Alt-L must have a selection, cannot auto select
-          "<M-l>" = ''
-            cmp.mapping.confirm({
-              i = function(fallback)
-                  if cmp.visible() and cmp.get_active_entry() then
-                      cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-                  else
-                      fallback()
-                  end
-              end,
-              s = cmp.mapping.confirm({ select = true }),
-              c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-            				})'';
-          "<M-j>" = "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
-          "<M-k>" = "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
-
-        };
-
-        snippet = {
-          expand = ''
-            function(args)
-              require("luasnip").lsp_expand(args.body)
-            end'';
-        };
-        experimental = {
-          ghost_text = {
-            hl_group = "GhostText";
-          };
-        };
-      };
-
-    };
-
-    plugins.cmp-nvim-lsp.enable = true;
-    plugins.cmp-buffer.enable = true;
-    plugins.cmp-path.enable = true;
-    plugins.cmp-cmdline.enable = true;
-    plugins.cmp_luasnip.enable = true;
-    plugins.luasnip.enable = true;
-    plugins.friendly-snippets.enable = true;
-
-    plugins.lualine = {
-      enable = true;
-      settings = {
-        options.theme = {
-          # icons_enabled = true;
-          normal = {
-            a = {
-              fg = hex.blue;
-              bg = hex.crust;
-            };
-            b = {
-              fg = hex.mauve;
-              bg = hex.crust;
-            };
-            c = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-            x = {
-              fg = hex.surface0;
-              bg = hex.crust;
-            };
-            y = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-            z = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-          };
-          insert = {
-            a = {
-              fg = hex.green;
-              bg = hex.crust;
-            };
-            z = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-          };
-          visual = {
-            a = {
-              fg = hex.mauve;
-              bg = hex.crust;
-            };
-            z = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-          };
-          command = {
-            a = {
-              fg = hex.peach;
-              bg = hex.crust;
-            };
-            z = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-          };
-          replace = {
-            a = {
-              fg = hex.red;
-              bg = hex.crust;
-            };
-            z = {
-              fg = hex.surface1;
-              bg = hex.crust;
-            };
-          };
-        };
-        options.component_separators = {
-          left = "";
-          right = "";
-        };
-        options.section_separators = {
-          left = "";
-          right = "";
-        };
-
-        #[
-        #{"filetype"
-        #{ icon = { align = "right"; }; }
-        #]
-
-        sections = {
-          lualine_a = [ "mode" ];
-          lualine_b = [
-            "branch"
-            "diagnostics"
-          ];
-          lualine_c = [ "filename" ];
-          lualine_x = [ ];
-          lualine_y = [ "progress" ];
-          lualine_z = [ "location" ];
-        };
-        inactive_sections = {
-          lualine_a = [ ];
-          lualine_b = [ ];
-          lualine_c = [ "filename" ];
-          lualine_x = [ "location" ];
-          lualine_y = [ ];
-          lualine_z = [ ];
-        };
-      };
-
-    };
-
-    colorschemes.catppuccin = {
-      enable = true;
-      settings = {
-
-        disable_underline = true;
-        flavour = "mocha";
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          notify = false;
-          treesitter = true;
-        };
-        term_colors = true;
-        custom_highlights = {
-          Normal = {
-            fg = hex.text;
-            bg = hex.crust;
-          };
-          Comment = {
-            fg = hex.overlay1;
-            style = { };
-          };
-          CursorLine = {
-            bg = hex.mantle;
-          };
-          NormalNC = {
-            fg = hex.text;
-            bg = hex.crust;
-          };
-          NormalFloat = {
-            fg = hex.text;
-            bg = hex.crust;
-          };
-          LineNr = {
-            fg = hex.surface0;
-          };
-
-          DiagnosticVirtualTextError = {
-            fg = hex.red;
-          };
-          DiagnosticVirtualTextWarning = {
-            fg = hex.yellow;
-          };
-          DiagnosticVirtualTextInfo = {
-            fg = hex.sapphire;
-          };
-          DiagnosticVirtualTextHint = {
-            fg = hex.teal;
-          };
-
-          GhostText = {
-            fg = hex.surface1;
-          };
-          LspInlayHint = {
-            fg = hex.surface1;
-            bg = "";
-          };
-
-        };
-      };
-    };
 
     plugins.treesitter = {
       enable = true;
@@ -477,132 +160,12 @@ in
         };
       };
     };
-
-    # plugins.rust-tools = {
-    #   enable = true;
+    # extraPlugins = with pkgs.vimPlugins; [
+    #   # rust-vim
+    #   # rust-tools-nvim
+    #   # nvim-lsp-endhints
     #
-    #   inlayHints = {
-    #     auto = false;
-    #     onlyCurrentLine = false;
-    #     showParameterHints = true;
-    #     parameterHintsPrefix = "<= ";
-    #     otherHintsPrefix = "-> ";
-    #     maxLenAlign = false;
-    #     maxLenAlignPadding = 1;
-    #     rightAlign = false;
-    #     rightAlignPadding = 3;
-    #     highlight = "LspInlayHint";
-    #   };
-    #
-    #   hoverActions = {
-    #     border = [
-    #       # [
-    #       #   "┏"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "━"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "┓"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "┃"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "┛"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "━"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "┗"
-    #       #   "FloatBorder"
-    #       # ]
-    #       # [
-    #       #   "┃"
-    #       #   "FloatBorder"
-    #       # ]
-    #
-    #     ];
-    #     autoFocus = false;
-    #
-    #   };
-    # };
-
-    extraPlugins = with pkgs.vimPlugins; [
-      # rust-vim
-      # rust-tools-nvim
-      # nvim-lsp-endhints
-
-    ];
+    # ];
 
   };
 }
-
-# return {
-# 	{
-# 		"simrat39/rust-tools.nvim",
-# 		config = function()
-# 			local rt = require("rust-tools")
-#
-# 			rt.setup({
-# 				tools = {
-# 					inlay_hints = {
-# 						auto = true,
-# 						only_current_line = false,
-# 						show_parameter_hints = true,
-# 						parameter_hints_prefix = "<= ",
-# 						other_hints_prefix = "-> ",
-# 						max_len_align = false,
-# 						max_len_align_padding = 1,
-# 						right_align = false,
-# 						right_align_padding = 3,
-# 						highlight = "LspInlayHint",
-# 					},
-# 					hover_actions = {
-# 						border = {
-# 							{ "┏", "FloatBorder" },
-# 							{ "━", "FloatBorder" },
-# 							{ "┓", "FloatBorder" },
-# 							{ "┃", "FloatBorder" },
-# 							{ "┛", "FloatBorder" },
-# 							{ "━", "FloatBorder" },
-# 							{ "┗", "FloatBorder" },
-# 							{ "┃", "FloatBorder" },
-# 						},
-# 						auto_focus = false,
-# 					},
-# 				},
-# 				server = {
-# 					on_attach = function(_, bufnr)
-# 						-- Info and documentation + Hover actions
-# 						-- vim.lsp.inlay_hint.enable(false)
-# 					end,
-# 				},
-# 			})
-# 			rt.inlay_hints.enable()
-# 		end,
-# 	},
-# 	{
-# 		"rust-lang/rust.vim",
-# 		ft = "rust",
-# 		init = function()
-# 			vim.g.rustfmt_autosave = 1
-# 		end,
-# 	},
-# 	{
-# 		"vxpm/ferris.nvim",
-# 		ft = { "rust" },
-# 		opts = {
-# 			-- your options here
-# 		},
-# 	},
-#
-# 	"saecki/crates.nvim",
-# }

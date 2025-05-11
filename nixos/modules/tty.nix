@@ -1,4 +1,4 @@
-{ pkgs, baseColors, ... }:
+{ baseColors, ... }:
 {
 
   console = {
