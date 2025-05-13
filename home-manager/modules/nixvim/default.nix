@@ -136,6 +136,29 @@ in
       };
     };
 
+    plugins.harpoon = {
+      enable = true;
+      # enableTelescope = false;
+      # package = pkgs.vimPlugins.harpoon;
+      # luaConfig = '''';
+    };
+    #
+    #   settings = {
+    #
+    #     save_on_toggle = false;
+    #     save_on_change = true;
+    #     enter_on_sendcmd = false;
+    #     tmux_autoclose_windows = false;
+    #     # excluded_filetypes = [ "harpoon" ];
+    #     # mark_branch = false;
+    #     # tabline = true;
+    #     # tabline_prefix = " |";
+    #     # tabline_suffix = "| ";
+    #
+    #   };
+    #
+    # };
+
     plugins.rustaceanvim = {
       enable = true;
       settings = {
@@ -160,12 +183,16 @@ in
         };
       };
     };
-    # extraPlugins = with pkgs.vimPlugins; [
-    #   # rust-vim
-    #   # rust-tools-nvim
-    #   # nvim-lsp-endhints
-    #
-    # ];
+    extraPlugins = with pkgs.vimPlugins; [
+
+      # harpoon
+      # plenary-nvim
+
+      # rust-vim
+      # rust-tools-nvim
+      # nvim-lsp-endhints
+
+    ];
 
   };
 }

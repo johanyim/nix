@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.nixvim = {
     keymaps = [
@@ -68,6 +68,55 @@
         options = {
           silent = true;
           desc = "Jump to the previous snippet anchor";
+        };
+      }
+
+      {
+        mode = [
+          "n"
+        ];
+        key = "<Space><Space>";
+        action = "<cmd>Telescope oldfiles<CR>";
+        # lua = true;
+        options = {
+          silent = true;
+          desc = "Telescope: Oldfiles";
+        };
+      }
+
+      {
+        mode = [
+          "n"
+        ];
+        key = "<Space>g";
+        action = "<cmd>Telescope live_grep<CR>";
+        options = {
+          silent = true;
+          desc = "Telescope: Live Grep";
+        };
+      }
+
+      {
+        mode = [
+          "n"
+        ];
+        key = "<Space>p";
+        action = "<cmd>Telescope find_files<CR>";
+        options = {
+          silent = true;
+          desc = "Telescope: Find Files";
+        };
+      }
+
+      {
+        mode = [
+          "n"
+        ];
+        key = "<Space>g";
+        action = "<cmd>Telescope live_grep<CR>";
+        options = {
+          silent = true;
+          desc = "Telescope: Live Grep";
         };
       }
 

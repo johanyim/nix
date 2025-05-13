@@ -65,6 +65,19 @@ in
           bg = "";
         };
 
+        TelescopeBorder = {
+          fg = hex.overlay2;
+        };
+
+        TelescopeMatching = {
+          fg = hex.yellow;
+          bg = hex.base;
+        };
+
+        TelescopeSelection = {
+          bg = hex.base;
+        };
+
       };
     };
   };

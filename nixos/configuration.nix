@@ -11,6 +11,31 @@
     ./modules
   ];
 
+  environment.systemPackages = with pkgs; [
+    # hyprland
+    git
+    gcc
+    libnotify
+    pulseaudio
+    brightnessctl
+
+    home-manager
+
+    rustup
+
+    zoxide
+    eza
+    ripgrep
+
+    wl-clipboard
+
+    killall
+
+    # transmission # this causes transmission-gtk to break
+    # because it uses the same port to listen for peers
+    transmission-gtk
+  ];
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -110,30 +135,6 @@
   # programs.hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    # hyprland
-    git
-    gcc
-    libnotify
-    pulseaudio
-    brightnessctl
-
-    home-manager
-
-    rustup
-
-    zoxide
-    eza
-
-    wl-clipboard
-
-    killall
-
-    # transmission # this causes transmission-gtk to break
-    # because it uses the same port to listen for peers
-    transmission-gtk
-  ];
 
   # services.transmission = {
   #   enable = true;

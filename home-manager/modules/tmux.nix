@@ -88,13 +88,13 @@ in
 
         # ============= Pane Killing and resizing ==============
 
-        bind -n M-C kill-pane #
+        bind -n M-C kill-pane
 
         # resizing panes
-        bind -n C-M-J resize-pane -D 5
-        bind -n C-M-K resize-pane -U 5
-        bind -n C-M-H resize-pane -L 5
-        bind -n C-M-L resize-pane -R 5
+        bind -n M-Down resize-pane -D 5
+        bind -n M-Up resize-pane -U 5
+        bind -n M-Left resize-pane -L 5
+        bind -n M-Right resize-pane -R 5
 
 
         # ============= Opening sessions =============
@@ -146,12 +146,15 @@ in
         set -g window-status-current-format "#I #W"
         set -g window-status-format "#I #W"
 
-
-
         # status text
         set -g status-left '#[fg=${hex.green},bold]|#S| #[default]'
         set -g status-right ""
 
+        # session name cutoff
+        set -g status-left-length 30 
+
+        # session manager style
+        set -g mode-style "fg=${hex.yellow},bg=${hex.base}"
 
 
         # Smart pane switching with awareness of Vim splits.
@@ -182,6 +185,18 @@ in
         # bind-key -T copy-mode-vi 'C-M-\ ' select-pane -l
 
         bind-key -T copy-mode-vi 'M-Space' select-pane -t:.+
+
+
+        ## ============= CUSTOM COMMANDS =================
+
+        # Run the last command of the last pane
+        bind-key Enter run-shell '
+          original_pane=$(tmux display-message -p "#{pane_id}") &&
+          tmux last-pane &&
+          tmux send-keys Up Enter &&
+          tmux select-pane -t "$original_pane"
+        '
+
       '';
 
   };
