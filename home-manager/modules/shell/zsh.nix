@@ -9,6 +9,12 @@
     # enableCompletions = true;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
+    shellAliases = {
+      "ls" = "eza -al";
+      "cd" = "z";
+      "t" = "tmux a";
+      "svim" = "sudo -E nvim";
+    };
     initExtra = ''
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
@@ -38,11 +44,6 @@
 
       eval "$(zoxide init zsh)"
     '';
-    shellAliases = {
-      "ls" = "eza -al";
-      "cd" = "z";
-      "t" = "tmux a";
-    };
 
   };
 

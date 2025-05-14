@@ -21,6 +21,9 @@
       hyprpaper
       bat
       bottom
+      nvimpager
+
+      (import ./scripts/hms.nix { inherit pkgs; })
     ];
   };
 
