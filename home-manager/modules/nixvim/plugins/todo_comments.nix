@@ -72,12 +72,6 @@ let
       alt = [ "FUTURE" ];
     };
 
-    # "STEP0" = {
-    #   icon = "󰎡 ";
-    #   color = hex.rosewater;
-    #   alt = [
-    #   ];
-    # };
   };
 
   icons = [
@@ -98,7 +92,7 @@ let
       name = "STEP${toString i}";
       value = {
         icon = builtins.elemAt icons i;
-        color = hex.text;
+        color = hex.rosewater;
         alt = [ "${toString i}" ];
       };
     }) (builtins.length icons)

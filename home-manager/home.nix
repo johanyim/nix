@@ -18,7 +18,7 @@
 # Hello
 # STEP6:
 # Hello
-# STEP7:
+# 7:
 # Hello
 
 {
