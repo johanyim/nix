@@ -1,4 +1,11 @@
-{ ... }:
+{
+  lib,
+  baseColors,
+  ...
+}:
+let
+  hex = lib.mapAttrs (name: color: "#${color}") baseColors;
+in
 {
   programs.nixvim.plugins.todo-comments = {
     enable = true;
@@ -76,6 +83,16 @@
           color = "#f9e2af";
           alt = [ "FUTURE" ];
         };
+
+        "STEP 0" = {
+          icon = "󰎡 ";
+          color = hex.green;
+          alt = [
+            "SETUP"
+            "STEP0"
+          ];
+        };
+
       };
       # FIX: fix this
       # this is a fix
