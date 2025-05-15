@@ -21,8 +21,8 @@
 
     home-manager
 
-    # rustup
-    # cargo
+    rustup
+    cargo
 
     zoxide
     eza
