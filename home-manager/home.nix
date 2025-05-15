@@ -23,6 +23,7 @@
       bottom
       nvimpager
       nh
+      hwinfo
 
       (import ./scripts/hms.nix { inherit pkgs; })
       (import ./scripts/nrs.nix { inherit pkgs; })
