@@ -84,7 +84,7 @@ in
           alt = [ "FUTURE" ];
         };
 
-        "STEP 0" = {
+        "STEP0" = {
           icon = "󰎡 ";
           color = hex.green;
           alt = [
