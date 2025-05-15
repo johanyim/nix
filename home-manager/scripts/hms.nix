@@ -6,9 +6,6 @@ pkgs.writeShellScriptBin "hms" ''
   ${pkgs.nh}/bin/nh home  switch "$HOME/nix"
 
 
-
-
-
   if [ $? -eq 0 ]; then
     MESSAGE=$(nix-env --list-generations \
   | grep current \

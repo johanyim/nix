@@ -129,11 +129,11 @@
         };
         bold = {
           family = "NotoSansM Nerd Font";
-          style = "Regular";
+          style = "Bold";
         };
         bold_italic = {
           family = "NotoSansM Nerd Font";
-          style = "Regular";
+          style = "Bold";
         };
       };
 
