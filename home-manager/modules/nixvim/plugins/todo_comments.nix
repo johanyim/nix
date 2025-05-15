@@ -81,10 +81,17 @@ let
   };
 
   icons = [
-    "icon0"
-    "icon1"
-    "icon2"
-    "icon3"
+    "󰎡 "
+    "󰎤 "
+    "󰎧 "
+    "󰎪 "
+    "󰎭 "
+    "󰎱 "
+    "󰎳 "
+    "󰎶 "
+    "󰎹 "
+    "󰎼 "
+    "󰽽 "
   ];
   steps = builtins.listToAttrs (
     builtins.genList (i: {
