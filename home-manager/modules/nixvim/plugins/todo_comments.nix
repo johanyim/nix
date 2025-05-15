@@ -98,7 +98,7 @@ let
     }) (builtins.length icons)
   );
 
-  keywords = steps;
+  keywords = user_defined_keywords // steps;
 
 in
 {
