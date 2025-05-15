@@ -1,9 +1,7 @@
 { pkgs }:
-# ${pkgs.home-manager}/bin/home-manager switch --flake "$HOME/nix/flake.nix"
 pkgs.writeShellScriptBin "hms" ''
   ${pkgs.git}/bin/git --no-pager diff 
   ${pkgs.git}/bin/git add "$HOME/nix"
-
 
   MESSAGE=$(nix-env --list-generations \
   | grep current \
