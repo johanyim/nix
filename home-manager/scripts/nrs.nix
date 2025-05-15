@@ -10,6 +10,6 @@ pkgs.writeShellScriptBin "nrs" ''
     ${pkgs.git}/bin/git commit -m "$MESSAGE"
 
   if [ $? -eq 0 ]; then
-    ${pkgs.nh}/bin/nh home switch "$HOME/nix"
+    sudo ${pkgs.nh}/bin/nh os switch "$HOME/nix"
   fi
 ''
