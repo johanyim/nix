@@ -92,7 +92,7 @@ let
       name = "STEP${toString i}";
       value = {
         icon = builtins.elemAt icons i;
-        color = hex.flamingo;
+        color = hex.rosewater;
         alt = [ "${toString i}" ];
       };
     }) (builtins.length icons)
