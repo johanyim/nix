@@ -22,6 +22,7 @@
       bat
       bottom
       nvimpager
+      nh
 
       (import ./scripts/hms.nix { inherit pkgs; })
     ];
