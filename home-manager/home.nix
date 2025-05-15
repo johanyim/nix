@@ -25,6 +25,7 @@
       nh
 
       (import ./scripts/hms.nix { inherit pkgs; })
+      (import ./scripts/nrs.nix { inherit pkgs; })
     ];
   };
 
