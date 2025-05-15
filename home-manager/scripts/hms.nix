@@ -9,8 +9,8 @@ pkgs.writeShellScriptBin "hms" ''
   if [ $? -eq 0 ]; then
     MESSAGE=$(nix-env --list-generations \
   | grep current \
-  | awk '{print "Gen-" $1 " at " $2 " " $3}')
-    ${pkgs.git}/bin/git commit -m "$MESSAGE"
+  | awk '{print "Gen[" $1 "] at " $2 " " $3}')
+    ${pkgs.git}/bin/git commit --edit -m "$MESSAGE"
   fi
 
 ''
