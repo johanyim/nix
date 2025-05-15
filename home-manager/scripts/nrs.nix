@@ -2,7 +2,7 @@
 pkgs.writeShellScriptBin "nrs" ''
   ${pkgs.git}/bin/git --no-pager diff 
   ${pkgs.git}/bin/git add "$HOME/nix"
-  ${pkgs.git}/bin/git reset --staged "$HOME/nix/home-manager"
+  ${pkgs.git}/bin/git restore --staged "$HOME/nix/home-manager"
 
   MESSAGE=$(nix-env --list-generations \
   | grep current \
