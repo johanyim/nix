@@ -6,7 +6,7 @@
   ...
 }:
 
-# STEP0:
+# STEP1:
 # Hello
 
 {

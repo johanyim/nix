@@ -72,12 +72,12 @@ let
       alt = [ "FUTURE" ];
     };
 
-    "STEP0" = {
-      icon = "󰎡 ";
-      color = hex.rosewater;
-      alt = [
-      ];
-    };
+    # "STEP0" = {
+    #   icon = "󰎡 ";
+    #   color = hex.rosewater;
+    #   alt = [
+    #   ];
+    # };
   };
 
   icons = [
