@@ -10,6 +10,6 @@ pkgs.writeShellScriptBin "nrs" ''
     ${pkgs.git}/bin/git commit -m "$MESSAGE"
 
   if [ $? -eq 0 ]; then
-    sudo ${pkgs.nh}/bin/nh os switch "$HOME/nix"
+    sudo nixos-rebuild switch --flake "$HOME/nix"
   fi
 ''
