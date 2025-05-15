@@ -10,7 +10,6 @@
       system = "x86_64-linux";
     in
     {
-
       nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -37,7 +36,7 @@
       };
     };
 
-  description = "my nix config";
+  description = "Johan's NixOS Configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
