@@ -1,17 +1,21 @@
 { pkgs }:
 pkgs.writeShellScriptBin "hms" ''
+  # include all within home manager
   ${pkgs.git}/bin/git --no-pager diff 
   ${pkgs.git}/bin/git add "$HOME/nix/home-manager/"
 
-  MESSAGE=$(
+  # home-manager switch
+  ${pkgs.nh}/bin/nh home switch "$HOME/nix"
 
-  home-manager generations \
-  | sed 1q \
-  | awk '{print "HomeManager[" $5 "] at " $1 " " $2 }'
-  )
-    ${pkgs.git}/bin/git commit -m "$MESSAGE"
-
+  # commit with message
   if [ $? -eq 0 ]; then
-    ${pkgs.nh}/bin/nh home switch "$HOME/nix"
+    MESSAGE=$(
+
+    home-manager generations \
+    | sed 1q \
+    | awk '{print "HomeManager[" $5 "] at " $1 " " $2 }'
+    )
+      ${pkgs.git}/bin/git commit -m "$MESSAGE"
   fi
+
 ''
