@@ -21,6 +21,9 @@
 
     home-manager
 
+    # rustup
+    # cargo
+
     zoxide
     eza
     ripgrep
