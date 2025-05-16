@@ -11,6 +11,8 @@
     vimium
     # rust-search-extension
     # clearurls
+
+    custom-new-tab-page
   ];
 
 }

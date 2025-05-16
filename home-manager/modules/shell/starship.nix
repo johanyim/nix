@@ -11,7 +11,7 @@ in
     enable = true;
     settings = {
       palette = "catppuccin_mocha";
-      format = "$directory$git_branch$git_status$nodejs$rust$golang$php$python$conda\n$sudo$character ";
+      format = "$directory$git_branch$git_status$nix_shell$nodejs$rust$golang$php$python$conda\n$sudo$character ";
       right_format = "$shell $time";
       continuation_prompt = "   $character ";
       add_newline = false;
@@ -52,6 +52,17 @@ in
         only_nonzero_diffs = false;
         format = "([+$added]($added_style) )([-$deleted]($deleted_style) )";
         disabled = true;
+      };
+
+      nix_shell = {
+        disabled = false;
+        symbol = " ";
+        impure_msg = "[impure](bold red)";
+        pure_msg = "[pure](bold green)";
+        style = "blue";
+        # unknown_msg = "[unknown shell](bold yellow)";
+        format = "[$symbol$state (\($name\))](bold blue) ";
+
       };
 
       nodejs = {

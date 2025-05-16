@@ -14,6 +14,7 @@
     username = "johan";
     homeDirectory = "/home/johan";
     stateVersion = "23.11";
+    # nixpkgs.config.allowUnfree = true;
     packages = with pkgs; [
       dconf
       neofetch
@@ -24,6 +25,7 @@
       nvimpager
       nh
       hwinfo
+      obsidian
 
       (import ./scripts/hms.nix { inherit pkgs; })
       (import ./scripts/nrs.nix { inherit pkgs; })

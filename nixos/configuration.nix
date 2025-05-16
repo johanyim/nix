@@ -15,6 +15,8 @@
     # hyprland
     git
     gcc
+    clang
+
     libnotify
     pulseaudio
     brightnessctl
@@ -116,6 +118,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
     ];
 
     packages = with pkgs; [
@@ -131,7 +134,7 @@
 
   # programs.hyprland.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # services.transmission = {
   #   enable = true;

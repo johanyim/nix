@@ -3,31 +3,49 @@
     {
       nixpkgs,
       home-manager,
+      rust-overlay,
       self,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
     in
     {
+
+      # NIXOS (root) configuration
       nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
-        modules = [ ./nixos/configuration.nix ];
+        pkgs = pkgs;
+        modules = [
+          ./nixos/configuration.nix
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+            }
+          )
+        ];
       };
 
+      # Home Manager (user) configuration
       homeConfigurations.johan = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
           inherit inputs self;
           baseColors = import ./colors/catppuccin-mocha.nix;
           wallpaperPath = import ./wallpaper;
         };
-
-        pkgs = nixpkgs.legacyPackages."${system}";
-
+        # pkgs = nixpkgs.legacyPackages."${system}";
+        pkgs = pkgs;
         modules = [
           ./home-manager/home.nix
           inputs.nixvim.homeManagerModules.nixvim
@@ -58,6 +76,11 @@
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
