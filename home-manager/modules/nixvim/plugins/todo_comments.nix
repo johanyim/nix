@@ -3,6 +3,17 @@
   baseColors,
   ...
 }:
+
+# FIX: fix this
+# this is a fix
+# TODO: this
+#  this is a todo
+# HACK:
+# WARN:
+# PERF:
+# NOTE:
+# TEST:
+# IDEA:
 let
   hex = lib.mapAttrs (name: color: "#${color}") baseColors;
 
@@ -74,6 +85,8 @@ let
 
   };
 
+  # 1: Step 1
+
   icons = [
     "󰎡 "
     "󰎤 "
@@ -116,17 +129,6 @@ in
     settings = {
 
       inherit keywords;
-
-      # FIX: fix this
-      # this is a fix
-      # TODO: this
-      #  this is a todo
-      # HACK:
-      # WARN:
-      # PERF:
-      # NOTE:
-      # TEST:
-      # IDEA:
 
       highlight = {
         multiline = true;
