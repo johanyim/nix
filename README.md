@@ -1,2 +1,1 @@
-# Johan's NixOS ConfiguratioJohan's NixOS Configuration
-
+# Johan's NixOS Configuration

@@ -89,6 +89,12 @@ in
 
     plugins.lsp-lines.enable = true;
 
+    plugins.none-ls = {
+      enable = true;
+      enableLspFormat = true;
+
+    };
+
     plugins.efmls-configs = {
       setup = {
         all.linter = [ "codespell" ];
@@ -159,40 +165,92 @@ in
     #
     # };
 
-    plugins.rustaceanvim = {
+    plugins.nvim-autopairs = {
+      enable = true;
+    };
+
+    plugins.rust-tools = {
+      enable = true;
+      reloadWorkspaceFromCargoToml = true;
+      inlayHints = {
+        auto = true;
+        onlyCurrentLine = false;
+        showParameterHints = true;
+        parameterHintsPrefix = "<= ";
+        otherHintsPrefix = "-> ";
+        maxLenAlign = false;
+        maxLenAlignPadding = 1;
+        rightAlign = false;
+        rightAlignPadding = 3;
+        highlight = "LspInlayHint";
+      };
+    };
+
+    plugins.conform-nvim = {
       enable = true;
       settings = {
-        server = {
-          default_settings = {
-            rust-analyzer = {
-              check = {
-                command = "clippy";
-              };
-              inlayHints = {
-                lifetimeElisionHints = {
-                  enable = "always";
-                };
-                typeHints = {
-                  enable = false;
-                  hideExplicitlyTyped = true;
-                };
-                renderColons = true;
-              };
-            };
-          };
+        format_on_save = {
+          lspFallback = true;
+          timeoutMs = 500;
+        };
+        formattersByFt = {
+          rust = [ "rustfmt" ];
         };
       };
     };
+
+    # # Enable format on save
+    # autoCmd = [
+    #   {
+    #     event = "BufWritePre";
+    #     pattern = "*.rs";
+    #     command = "lua vim.lsp.buf.format()";
+    #   }
+    # ];
+
+    # plugins.conform-nvim.enable = true;
+
+    # plugins.rustaceanvim = {
+    #   enable = true;
+    #   settings = {
+    #     server = {
+    #       default_settings = {
+    #         rust-analyzer = {
+    #           check = {
+    #             command = "clippy";
+    #           };
+    #           inlayHints = {
+    #             # lifetimeElisionHints = {
+    #             #   enable = "never";
+    #             # };
+    #             typeHints = {
+    #               enable = true;
+    #               hideExplicitlyTyped = true;
+    #             };
+    #             renderColons = true;
+    #           };
+    #         };
+    #       };
+    #     };
+    #   };
+    # };
+
     extraPlugins = with pkgs.vimPlugins; [
 
       # harpoon
       # plenary-nvim
 
-      # rust-vim
+      rust-vim
       # rust-tools-nvim
       # nvim-lsp-endhints
 
     ];
+
+    extraConfigLua = ''
+      -- require('rust.vim').setup({
+        vim.g.rustfmt_autosave = 1
+      -- }})
+    '';
 
   };
 }

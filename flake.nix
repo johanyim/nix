@@ -1,4 +1,5 @@
 {
+
   outputs =
     {
       nixpkgs,
@@ -9,9 +10,17 @@
     }@inputs:
     let
       system = "x86_64-linux";
+
+      # whitelisting unfree software
+      unfree = [
+        "steam"
+        "obsidian"
+      ];
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+        config.allowUnfreePredicate = (
+          pkg: builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree
+        );
       };
 
     in
@@ -24,7 +33,7 @@
           inherit inputs;
           baseColors = import ./colors/catppuccin-mocha.nix;
         };
-        pkgs = pkgs;
+        inherit pkgs;
         modules = [
           ./nixos/configuration.nix
           (
@@ -45,7 +54,7 @@
           wallpaperPath = import ./wallpaper;
         };
         # pkgs = nixpkgs.legacyPackages."${system}";
-        pkgs = pkgs;
+        inherit pkgs;
         modules = [
           ./home-manager/home.nix
           inputs.nixvim.homeManagerModules.nixvim
@@ -66,6 +75,8 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     catppuccin.url = "github:catppuccin/nix";
 

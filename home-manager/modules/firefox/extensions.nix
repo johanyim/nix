@@ -10,9 +10,10 @@
     # darkreader
     vimium
     # rust-search-extension
-    # clearurls
+    clearurls
+    auto-tab-discard
 
-    custom-new-tab-page
+    nyaa-linker
   ];
 
 }

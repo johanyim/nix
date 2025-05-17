@@ -100,7 +100,8 @@ in
         # ============= Opening sessions =============
 
         unbind w
-        bind s choose-tree -sw
+        # bind s choose-tree -sw
+        bind s choose-tree -Zsw
 
 
         # ========= Misc Options ================
@@ -121,6 +122,9 @@ in
         # keep current path as new window's path
         bind c new-window -c "#{pane_current_path}"
 
+        # clipboard
+        set-option -g set-clipboard on
+        set-option -g allow-passthrough on
 
 
         # ========= Status bar Styling ==========
@@ -186,13 +190,17 @@ in
 
         bind-key -T copy-mode-vi 'M-Space' select-pane -t:.+
 
+        bind-key -T copy-mode-vi 'M-Space' select-pane -t:.+
+
+        bind-key -n M-Tab last-window
 
         ## ============= CUSTOM COMMANDS =================
 
         # Run the last command of the last pane
         bind-key Enter run-shell '
-          original_pane=$(tmux display-message -p "#{pane_id}") &&
+          original_pane=#{pane_id} &&
           tmux last-pane &&
+          tmux send-keys C-c &&
           tmux send-keys Up Enter &&
           tmux select-pane -t "$original_pane"
         '

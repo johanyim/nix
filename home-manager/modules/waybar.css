@@ -187,6 +187,7 @@ window#waybar {
 
 #battery {
     color: @lavender;
+    border-radius: 8px;
 }
 
 #battery.warning:not(.charging) {
@@ -195,6 +196,14 @@ window#waybar {
 
 #battery.critical:not(.charging) {
     color: @red;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    background: @red;
+    color: @crust;
+  }
 }
 
 

@@ -27,8 +27,18 @@
       hwinfo
       obsidian
 
+      grim
+      slurp
+      wl-clipboard
+
+      vimiv-qt
+
+      swappy
+
       (import ./scripts/hms.nix { inherit pkgs; })
       (import ./scripts/nrs.nix { inherit pkgs; })
+      (import ./scripts/screenshot.nix { inherit pkgs; })
+      (import ./scripts/screenshot-edit.nix { inherit pkgs; })
     ];
   };
 

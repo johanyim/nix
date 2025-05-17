@@ -113,6 +113,11 @@ in
         # toggle bar
         "$mod, B, exec, killall -SIGUSR1 .waybar-wrapped || waybar"
 
+        # screenshot
+        # WARNING: this assumes that the screen utilities are under $PATH
+        "$mod SHIFT, S, exec, screenshot"
+        "$mod CTRL SHIFT, S, exec, screenshot-edit"
+
         # I'll have to think about what to do with this
         "$mod, z, togglespecialworkspace"
         "$mod SHIFT, z, movetoworkspace, special"

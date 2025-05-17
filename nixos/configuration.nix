@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -87,6 +85,13 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+  };
+
+  services.upower = {
+    enable = true;
+    percentageLow = 20;
+    percentageCritical = 5;
+    criticalPowerAction = "Hibernate";
   };
 
   # services.seatd.enable = true;

@@ -74,6 +74,13 @@
 
     encoding = "utf-8";
     fileencoding = "utf-8";
+
+    # clipboard = "osc52";
+  };
+
+  programs.nixvim.clipboard = {
+    register = "unnamed";
+    providers.wl-copy.enable = true;
   };
 
 }
