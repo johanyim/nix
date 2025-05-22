@@ -23,11 +23,15 @@
           "html"
           "jsx"
         ];
-        # settings = {
-        #   formatting = {
-        #     command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-        #   };
-        # };
+      };
+
+      bashls = {
+        enable = true;
+        filetypes = [
+          "sh"
+          "bash"
+          "zsh"
+        ];
       };
     };
   };

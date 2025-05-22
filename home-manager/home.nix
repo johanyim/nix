@@ -5,6 +5,9 @@
   inputs,
   ...
 }:
+let
+  scripts = import ./scripts { inherit pkgs; };
+in
 {
   imports = [
     ./modules
@@ -15,35 +18,36 @@
     homeDirectory = "/home/johan";
     stateVersion = "23.11";
     # nixpkgs.config.allowUnfree = true;
-    packages = with pkgs; [
-      dconf
-      neofetch
-      htop
-      hyprpaper
-      bat
-      bottom
-      nvimpager
-      nh
-      hwinfo
-      obsidian
+    packages =
+      with pkgs;
+      [
+        dconf
+        neofetch
+        htop
+        hyprpaper
+        bat
+        nvimpager
+        nh
+        hwinfo
+        obsidian
+        wl-clipboard
 
-      grim
-      slurp
-      wl-clipboard
+        # screenshots
+        grim
+        slurp
+        # image viewer
+        vimiv-qt
+        # image editing
+        swappy
 
-      vimiv-qt
+        dua
 
-      swappy
+        bluetuith
 
-      (import ./scripts/hms.nix { inherit pkgs; })
-      (import ./scripts/nrs.nix { inherit pkgs; })
-      (import ./scripts/screenshot.nix { inherit pkgs; })
-      (import ./scripts/screenshot-edit.nix { inherit pkgs; })
-    ];
-  };
+        mpv
 
-  programs.mpv = {
-    enable = true;
+      ]
+      ++ scripts;
   };
 
   catppuccin.flavor = "mocha";
@@ -63,5 +67,7 @@
   gtk = {
     enable = true;
   };
+
+  news.display = "show";
 
 }

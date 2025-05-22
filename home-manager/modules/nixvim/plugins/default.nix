@@ -1,10 +1,12 @@
 { ... }:
 {
   imports = [
-    ./oil.nix
-    ./lsp.nix
     ./completions.nix
+    ./conform.nix
+    ./lsp.nix
     ./lualine.nix
+    ./none_ls.nix
+    ./oil.nix
     ./telescope.nix
     ./todo_comments.nix
   ];

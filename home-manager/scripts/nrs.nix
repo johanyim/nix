@@ -10,10 +10,20 @@ pkgs.writeShellScriptBin "nrs" ''
 
   # commit with message
   if [ $? -eq 0 ]; then
-    MESSAGE=$(nix-env --list-generations \
+    GENERATION=$(nix-env --list-generations \
+    | grep current \
+    | awk '{print $1}')
+      ${pkgs.git}/bin/git commit -m "$MESSAGE"
+
+
+    COMMIT_MESSAGE=$(nix-env --list-generations \
     | grep current \
     | awk '{print "NixOS[" $1 "] at " $2 " " $3}')
       ${pkgs.git}/bin/git commit -m "$MESSAGE"
+
+    
+    ${pkgs.git}/bin/git commit -m "$COMMIT_MESSAGE"
+    ${pkgs.libnotify}/bin/notify-send "Generation $GENERATION" "NixOS"
   fi
 
 ''

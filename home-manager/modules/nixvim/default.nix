@@ -22,6 +22,12 @@ in
     enable = true;
     defaultEditor = true;
 
+    # TODO: configure this plugin with autocmds
+    plugins.baleia.enable = true;
+    plugins.nvim-autopairs.enable = true;
+    plugins.lsp-lines.enable = true;
+    plugins.web-devicons.enable = true;
+
     plugins.tmux-navigator = {
       enable = true;
       settings = {
@@ -46,8 +52,6 @@ in
         }
       ];
     };
-
-    plugins.web-devicons.enable = true;
 
     plugins.treesitter = {
       enable = true;
@@ -87,30 +91,10 @@ in
       };
     };
 
-    plugins.lsp-lines.enable = true;
-
-    plugins.none-ls = {
-      enable = true;
-      enableLspFormat = true;
-
-    };
-
     plugins.efmls-configs = {
       setup = {
         all.linter = [ "codespell" ];
         bash.formatter = [ "beautysh" ];
-        # c = {
-        #   formatter = [ "clang_tidy" ];
-        #   linter = [ "clang_tidy" ];
-        # };
-        # "c++" = {
-        #   formatter = [ "clang_tidy" ];
-        #   linter = [ "clang_tidy" ];
-        # };
-        # cmake = {
-        #   formatter = [ "gersemi" ];
-        #   linter = [ "cmake_lint" ];
-        # };
         css = {
           formatter = [ "prettier" ];
           linter = [ "proselint" ];
@@ -142,33 +126,6 @@ in
       };
     };
 
-    plugins.harpoon = {
-      enable = true;
-      # enableTelescope = false;
-      # package = pkgs.vimPlugins.harpoon;
-      # luaConfig = '''';
-    };
-    #
-    #   settings = {
-    #
-    #     save_on_toggle = false;
-    #     save_on_change = true;
-    #     enter_on_sendcmd = false;
-    #     tmux_autoclose_windows = false;
-    #     # excluded_filetypes = [ "harpoon" ];
-    #     # mark_branch = false;
-    #     # tabline = true;
-    #     # tabline_prefix = " |";
-    #     # tabline_suffix = "| ";
-    #
-    #   };
-    #
-    # };
-
-    plugins.nvim-autopairs = {
-      enable = true;
-    };
-
     plugins.rust-tools = {
       enable = true;
       reloadWorkspaceFromCargoToml = true;
@@ -183,19 +140,6 @@ in
         rightAlign = false;
         rightAlignPadding = 3;
         highlight = "LspInlayHint";
-      };
-    };
-
-    plugins.conform-nvim = {
-      enable = true;
-      settings = {
-        format_on_save = {
-          lspFallback = true;
-          timeoutMs = 500;
-        };
-        formattersByFt = {
-          rust = [ "rustfmt" ];
-        };
       };
     };
 
@@ -236,7 +180,6 @@ in
     # };
 
     extraPlugins = with pkgs.vimPlugins; [
-
       # harpoon
       # plenary-nvim
 

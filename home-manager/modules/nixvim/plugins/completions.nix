@@ -1,6 +1,11 @@
 { ... }:
 {
-  programs.nixvim.plugins.luasnip.enable = true;
+  programs.nixvim.plugins.luasnip = {
+    enable = true;
+    fromLua = [
+      { paths = [ ../snippets ]; }
+    ];
+  };
 
   programs.nixvim.plugins.friendly-snippets.enable = true;
 

@@ -1,6 +1,6 @@
 { ... }:
 {
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   # sound.enable = true;
 
   security.rtkit.enable = true;

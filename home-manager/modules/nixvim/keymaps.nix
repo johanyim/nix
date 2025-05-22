@@ -122,19 +122,37 @@
 
     ];
 
-    plugins.lsp.keymaps = {
-      lspBuf = {
-        K = "hover";
-        gD = "references";
-        gd = "definition";
-        gi = "implementation";
-        gt = "type_definition";
-      };
-      diagnostic = {
+    lsp.keymaps = [
 
-      };
-
-    };
+      {
+        lspBufAction = "hover";
+        key = "K";
+      }
+      {
+        lspBufAction = "references";
+        key = "gD";
+      }
+      {
+        lspBufAction = "definition";
+        key = "gd";
+      }
+      {
+        lspBufAction = "implementation";
+        key = "gi";
+      }
+      {
+        lspBufAction = "type_definition";
+        key = "gt";
+      }
+      {
+        lspBufAction = "code_action";
+        key = "<Leader>ca";
+      }
+      {
+        lspBufAction = "rename";
+        key = "<Leader>rn";
+      }
+    ];
 
     plugins.oil.settings.keymaps = {
       "g?" = "actions.show_help";

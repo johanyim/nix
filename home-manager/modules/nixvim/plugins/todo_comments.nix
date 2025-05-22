@@ -4,24 +4,13 @@
   ...
 }:
 
-# FIX: fix this
-# this is a fix
-# TODO: this
-#  this is a todo
-# HACK:
-# WARN:
-# PERF:
-# NOTE:
-# TEST:
-# IDEA:
 let
   hex = lib.mapAttrs (name: color: "#${color}") baseColors;
 
-  # TODO: use hex.color for these
   user_defined_keywords = {
     FIX = {
       icon = " ";
-      color = "#f38ba8";
+      color = hex.red;
       alt = [
         "FIXME"
         "BUG"
@@ -30,22 +19,22 @@ let
       ];
     };
 
-    ERROR = {
-      icon = " ";
-      color = "#f38ba8";
-    };
     TODO = {
       icon = " ";
-      color = "#f2cdcd";
+      color = hex.flamingo;
     };
     HACK = {
       icon = " ";
-      color = "#fab387";
+      color = hex.peach;
       alt = [ "WTF" ];
+    };
+    ERROR = {
+      icon = " ";
+      color = hex.red;
     };
     WARN = {
       icon = " ";
-      color = "#f9e2af";
+      color = hex.yellow;
       alt = [
         "WARNING"
         "XXX"
@@ -53,7 +42,7 @@ let
     };
     PERF = {
       icon = "󰅒 ";
-      color = "#f5c2e7";
+      color = hex.pink;
       alt = [
         "OPTIM"
         "PERFORMANCE"
@@ -62,30 +51,19 @@ let
     };
     NOTE = {
       icon = " ";
-      color = "#b4befe";
+      color = hex.lavender;
       alt = [ "INFO" ];
     };
     # DEBUG = {
     #
     # };
-    TEST = {
-      icon = " ";
-      color = "#94e2d5";
-      alt = [
-        "TESTING"
-        "PASSED"
-        "FAILED"
-      ];
-    };
     IDEA = {
       icon = "󰛨 ";
-      color = "#f9e2af";
+      color = hex.yellow;
       alt = [ "FUTURE" ];
     };
 
   };
-
-  # 1: Step 1
 
   icons = [
     "󰎡 "

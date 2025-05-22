@@ -80,6 +80,8 @@ in
           interval = 1800;
           format = " 󰻂 {percentage_used}%";
           tooltip-format = "{used}/{total}";
+          on-click = "alacritty -e dua i /";
+
           path = "/";
         };
 
@@ -100,6 +102,7 @@ in
           tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ifname} {ipaddr}/{cidr}";
           tooltip-format-ethernet = "{ifname} {ipaddr}/{cidr}";
           tooltip-format-disconnected = "Disconnected";
+          on-click = "alacritty -e nmtui";
           max-length = 20;
         };
 
@@ -113,6 +116,7 @@ in
           tooltip-format = "{num_connections} connected";
           tooltip-format-connected = "{num_connections} connected\n{device_enumerate}";
           tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+          on-click = "alacritty -e bluetuith";
         };
 
         cpu = {
@@ -127,23 +131,8 @@ in
             "<span foreground='${hex.lavender}'>▇</span>"
             "<span foreground='${hex.rosewater}'>█</span>"
           ];
+          on-click = "alacritty -e btm --default_widget_type processes -e";
         };
-
-        #         esac
-        # # Check if Bluetooth is blocked (off)
-        # if rfkill list bluetooth | grep -q "Soft blocked: yes"; then
-        #     echo "󰂲 Off"
-        # else
-        #
-        #     # Get the name of the connected Bluetooth device (if any)
-        #     connected_device=$(bluetoothctl info | grep "Alias" | awk '{print $2}')
-        #
-        #     if [ -n "$connected_device" ]; then
-        #         echo "󰂰 $connected_device"
-        #     else
-        #         echo "󰂯 None"
-
-        # "wlr/taskbar" =
 
         "group/life" = {
           orientation = "horizontal";
@@ -177,6 +166,7 @@ in
           weighted_average = true;
           format = "{icon} {capacity}%";
           format-charging = "󰚥{icon} {capacity}%";
+          on-click = "alacritty -e btm --battery --default_widget_type battery -e";
         };
 
         temperature = {

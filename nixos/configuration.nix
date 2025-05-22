@@ -32,9 +32,12 @@
 
     killall
 
+    hwinfo
+
     # transmission # this causes transmission-gtk to break
     # because it uses the same port to listen for peers
     transmission-gtk
+
   ];
 
   environment.variables = {
@@ -104,8 +107,9 @@
   fonts = {
     packages = with pkgs; [
       # nerd-fonts.noto-fonts
-      # nerd-fonts.droid-sans-mono
-      nerdfonts
+      nerd-fonts.departure-mono
+      nerd-fonts.noto
+      # nerdfonts
       noto-fonts
       departure-mono
     ];
@@ -129,7 +133,7 @@
     packages = with pkgs; [
       fastfetch
       # nerd-fonts.noto
-      nerdfonts
+      # nerdfonts
       noto-fonts
       # nerd-fonts.droid-sans-mono
     ];

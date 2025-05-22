@@ -1,4 +1,7 @@
-# { baseColors, ... }:
+{ lib, baseColors, ... }:
+let
+  hex = lib.mapAttrs (name: hex: "#${hex}") baseColors;
+in
 {
   programs.alacritty = {
     enable = true;
@@ -9,93 +12,93 @@
 
       colors.indexed_colors = [
         {
-          color = "#FAB387";
+          color = hex.peach;
           index = 16;
         }
         {
-          color = "#F5E0DC";
+          color = hex.rosewater;
           index = 17;
         }
       ];
 
       colors.bright = {
-        black = "#585B70";
-        blue = "#89B4FA";
-        cyan = "#94E2D5";
-        green = "#A6E3A1";
-        magenta = "#F5C2E7";
-        red = "#F38BA8";
-        white = "#A6ADC8";
-        yellow = "#F9E2AF";
+        black = hex.surface2;
+        blue = hex.blue;
+        cyan = hex.teal;
+        green = hex.green;
+        magenta = hex.pink;
+        red = hex.red;
+        white = hex.subtext0;
+        yellow = hex.yellow;
       };
 
       colors.cursor = {
-        cursor = "#cdd6f4";
-        text = "#1E1E2E";
+        cursor = hex.text;
+        text = hex.base;
       };
 
       colors.dim = {
-        black = "#45475A";
-        blue = "#89B4FA";
-        cyan = "#94E2D5";
-        green = "#A6E3A1";
-        magenta = "#F5C2E7";
-        red = "#F38BA8";
-        white = "#BAC2DE";
-        yellow = "#F9E2AF";
+        black = hex.surface1;
+        blue = hex.blue;
+        cyan = hex.teal;
+        green = hex.green;
+        magenta = hex.pink;
+        red = hex.red;
+        white = hex.subtext1;
+        yellow = hex.yellow;
       };
 
       colors.hints.end = {
-        background = "#A6ADC8";
-        foreground = "#1E1E2E";
+        background = hex.subtext0;
+        foreground = hex.base;
       };
 
       colors.hints.start = {
-        background = "#F9E2AF";
-        foreground = "#1E1E2E";
+        background = hex.yellow;
+        foreground = hex.base;
       };
 
       colors.normal = {
-        black = "#45475A";
-        blue = "#89B4FA";
-        cyan = "#94E2D5";
-        green = "#A6E3A1";
-        magenta = "#F5C2E7";
-        red = "#F38BA8";
-        white = "#BAC2DE";
-        yellow = "#F9E2AF";
+        black = hex.surface1;
+        blue = hex.blue;
+        cyan = hex.teal;
+        green = hex.green;
+        magenta = hex.pink;
+        red = hex.red;
+        white = hex.subtext1;
+        yellow = hex.yellow;
       };
 
       colors.primary = {
-        background = "#11111B";
-        bright_foreground = "#CDD6F4";
-        dim_foreground = "#CDD6F4";
-        foreground = "#CDD6F4";
+        background = hex.crust;
+        bright_foreground = hex.text;
+        dim_foreground = hex.text;
+        foreground = hex.text;
       };
 
       colors.search.focused_match = {
-        background = "#A6E3A1";
-        foreground = "#1E1E2E";
+        background = hex.green;
+        foreground = hex.base;
       };
 
       # colors.search.footer_bar = {
-      #     background = "#A6ADC8";
-      #     foreground = "#1E1E2E";
+      #     background = hex.subtext0;
+      #     foreground = hex.base;
       # };
 
       colors.search.matches = {
-        background = "#A6ADC8";
-        foreground = "#1E1E2E";
+        background = hex.subtext0;
+        foreground = hex.base;
       };
 
       colors.selection = {
-        background = "#B4BEFE";
-        text = "#11111B";
+        background = hex.lavender;
+        text = hex.crust;
       };
 
       colors.vi_mode_cursor = {
-        cursor = "#B4BEFE";
-        text = "#1E1E2E";
+        cursor = hex.lavender;
+        text = hex.base;
       };
 
       cursor = {

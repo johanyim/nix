@@ -9,13 +9,20 @@ pkgs.writeShellScriptBin "hms" ''
 
   # commit with message
   if [ $? -eq 0 ]; then
-    MESSAGE=$(
+    GENERATION=$(
+    home-manager generations \
+    | sed 1q \
+    | awk '{print $5}'
+    )
 
+    COMMIT_MESSAGE=$(
     home-manager generations \
     | sed 1q \
     | awk '{print "HomeManager[" $5 "] at " $1 " " $2 }'
     )
-      ${pkgs.git}/bin/git commit -m "$MESSAGE"
+    
+    ${pkgs.git}/bin/git commit -m "$COMMIT_MESSAGE"
+    ${pkgs.libnotify}/bin/notify-send "Generation $GENERATION" "Home-manager"
   fi
 
 ''

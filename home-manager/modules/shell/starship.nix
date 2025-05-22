@@ -85,7 +85,6 @@ in
 
       php = {
         symbol = "";
-        style = "bg:#212736";
         format = "[[$symbol ($version) ](mauve)]($style)";
       };
 
