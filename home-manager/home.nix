@@ -6,7 +6,11 @@
   ...
 }:
 let
-  scripts = import ./scripts { inherit pkgs; };
+
+  ## import all scripts within the scripts directory
+  scriptFiles = builtins.attrNames (builtins.readDir ./scripts);
+  # scripts = import ./scripts { inherit pkgs; };
+  scripts = builtins.map (file: import ./scripts/${file} { inherit pkgs; }) scriptFiles;
 in
 {
   imports = [
