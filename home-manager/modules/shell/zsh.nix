@@ -13,7 +13,7 @@
       "ls" = "eza -al";
       "cd" = "z";
       "t" = "tmux a";
-      "svim" = "sudo -E nvim";
+      "grep" = "rg";
     };
     initExtra = ''
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
