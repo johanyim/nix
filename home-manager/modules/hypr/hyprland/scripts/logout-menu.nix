@@ -17,8 +17,8 @@ pkgs.writeShellScriptBin "logout-menu" ''
   󰗽 Logout
   " | ${pkgs.rofi}/bin/rofi -theme-str "
   element-text { text-color: ${hex.overlay0}; } 
-  window { width: 14ch; height: 10em; }
-  " -dmenu -i -p "" -font "Departure Mono 12" | 
+  window { width: 14ch; height: 14ch; }
+  " -dmenu -i -p "" -font "Departure Mono 16" | 
   awk -F' ' '{ print $2 }')
 
   case $option in
