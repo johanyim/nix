@@ -15,8 +15,9 @@ pkgs.writeShellScriptBin "port_killer" ''
   # pname=$(echo "$selection" | awk -F'\t' '{ print $2 }')
   # pid=$(echo "$selection" | awk -F'\t' '{ print $3 }')
 
+  # vvvv is a more efficient version of ^^^^, but wtf
 
-  IFS=$'\t' read -r listener pname pid <<< "$selection"
+  IFS=$'\t' read -r listener pname pid <<<"$selection"
 
   kill "$pid" || kill -9 "$pid" && ${pkgs.libnotify}/bin/notify-send "$pname (PID: $pid) listening on $listener killed successfully"
 ''
