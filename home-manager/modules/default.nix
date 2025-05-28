@@ -12,5 +12,6 @@
     ./rofi.nix
     ./tmux.nix
     ./waybar.nix
+    ./xdg.nix
   ];
 }
