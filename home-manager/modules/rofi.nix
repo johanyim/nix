@@ -98,7 +98,7 @@ in
         margin = mkLiteral "0 10";
         background-color = mkLiteral "inherit";
         text-color = mkLiteral hex.text;
-        highlight = mkLiteral "${hex.yellow}";
+        highlight = mkLiteral hex.yellow;
       };
 
       "element-text .active, element-text .urgent" = {

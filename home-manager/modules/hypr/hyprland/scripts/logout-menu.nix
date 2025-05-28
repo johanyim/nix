@@ -16,7 +16,7 @@ pkgs.writeShellScriptBin "logout-menu" ''
    Restart
   󰗽 Logout
   " | ${pkgs.rofi}/bin/rofi -theme-str "
-  element-text { text-color: ${hex.lavender}; } 
+  element-text { text-color: ${hex.text}; } 
   window { width: 14ch; height: 18ch; }
   " -dmenu -i -p "" -font "Departure Mono 16" | 
   awk -F' ' '{ print $2 }')
