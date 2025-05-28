@@ -7,6 +7,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules
+    ./env.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -39,23 +40,9 @@
     transmission-gtk
 
   ];
-
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    MANPAGER = "nvim -c 'Man!' -";
-  };
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "thinkpad";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  networking.networkmanager.enable = true;
   time.timeZone = "Europe/London";
 
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -71,6 +58,10 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
 
   services.xserver.enable = true;
 
@@ -83,11 +74,6 @@
         user = "johan";
       };
     };
-  };
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
   };
 
   services.upower = {
@@ -103,22 +89,6 @@
   services.printing.enable = true;
 
   security.rtkit.enable = true;
-
-  fonts = {
-    packages = with pkgs; [
-      # nerd-fonts.noto-fonts
-      nerd-fonts.departure-mono
-      nerd-fonts.noto
-      # nerdfonts
-      noto-fonts
-      departure-mono
-    ];
-    fontconfig = {
-      defaultFonts = {
-        monospace = [ "Noto Sans Mono" ];
-      };
-    };
-  };
 
   users.users.johan = {
     isNormalUser = true;
@@ -151,18 +121,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 51413 ];
-  networking.firewall.allowedUDPPorts = [ 51413 ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-
-  # for ethernet
-  # networking.useDHCP = true;
-
-  # # or if using interfaces directly:
-  # networking.interfaces.enp0s31f6.useDHCP = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
