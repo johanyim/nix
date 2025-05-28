@@ -15,7 +15,7 @@ pkgs.writeShellScriptBin "logout-menu" ''
    Shutdown
    Restart
   󰗽 Logout
-  " | ${pkgs.rofi}/bin/rofi -theme-str "element-text { text-color: ${hex.overlay0}; }" -dmenu -i -p "" -font "Departure Mono 36" | awk -F' ' '{ print $2 }')
+  " | ${pkgs.rofi}/bin/rofi -theme-str "element-text { text-color: ${hex.overlay0}; } window {width: 14ch; height: 10em;}" -dmenu -i -p "" -font "Departure Mono" | awk -F' ' '{ print $2 }')
 
   case $option in
   "Lock")
