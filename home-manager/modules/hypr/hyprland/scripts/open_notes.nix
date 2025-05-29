@@ -14,12 +14,13 @@ pkgs.writeShellScriptBin "open_notes" ''
   	exit 0
   fi
 
+      quotes="'" + "'"
   case "$selection" in
   "Create daily note")
   	if [[ -f "$HOME/notes/$(date --i).md" ]]; then
   		${pkgs.alacritty}/bin/alacritty -e $EDITOR "$HOME/notes/$(date --i).md"
   	else
-  		${pkgs.alacritty}/bin/alacritty -e $EDITOR -c "put='# $(date --i)'" -c "put=''''" -c "put=''''" -c "normal! 3G" -c 'startinsert' "$HOME/notes/$(date --i).md"
+  		${pkgs.alacritty}/bin/alacritty -e $EDITOR -c "put='# $(date --i)'" -c "put=$quotes" -c "put=$quotes" -c "normal! 3G" -c 'startinsert' "$HOME/notes/$(date --i).md"
   	fi
   	exit 0
   	;;
