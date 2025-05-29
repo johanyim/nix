@@ -43,7 +43,7 @@
       bindkey -M menuselect 'j' vi-down-line-or-history
 
       eval "$(zoxide init zsh)"
-      source <(fzf --zsh)
+      source <(${pkgs.fzf}/bin/fzf --zsh)
 
     '';
 
