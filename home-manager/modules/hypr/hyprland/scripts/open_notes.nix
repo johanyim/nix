@@ -14,7 +14,6 @@ pkgs.writeShellScriptBin "open_notes" ''
   	exit 0
   fi
 
-      quotes="'" + "'"
   case "$selection" in
   "Create daily note")
   	if [[ -f "$HOME/notes/$(date --i).md" ]]; then
