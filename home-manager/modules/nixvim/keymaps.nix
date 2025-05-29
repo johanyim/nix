@@ -75,7 +75,7 @@
         mode = [
           "n"
         ];
-        key = "<Space><Space>";
+        key = "<Space>o";
         action = "<cmd>Telescope oldfiles<CR>";
         # lua = true;
         options = {
@@ -93,6 +93,18 @@
         options = {
           silent = true;
           desc = "Telescope: Live Grep";
+        };
+      }
+
+      {
+        mode = [
+          "n"
+        ];
+        key = "<Space><Space>";
+        action = "<cmd>Telescope find_files<CR>";
+        options = {
+          silent = true;
+          desc = "Telescope: Find Files";
         };
       }
 
