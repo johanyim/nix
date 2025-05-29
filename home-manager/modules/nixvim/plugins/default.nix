@@ -5,6 +5,7 @@
     ./conform.nix
     ./lsp.nix
     ./lualine.nix
+    ./markdown.nix
     ./none_ls.nix
     ./oil.nix
     ./telescope.nix
