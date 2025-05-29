@@ -2,6 +2,10 @@
 pkgs.writeShellScriptBin "open_notes" ''
 
   options=$(ls -1 "$HOME/notes")
+  options="Scratchpad
+  Create daily note
+  $options
+  "
 
   selection=$(echo "$options" | ${pkgs.rofi}/bin/rofi -dmenu -i)
 
