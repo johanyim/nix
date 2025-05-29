@@ -55,7 +55,6 @@
         cell = "padded";
         alignment_indicator = "━";
         border = [
-
           "┌"
           "┬"
           "┐"
@@ -77,11 +76,11 @@
         enabled = true;
         position = "overlay";
         unchecked = {
-          icon = "    󰄱";
+          icon = "   󰄱 ";
           highlight = "RenderMarkdownUnchecked";
         };
         checked = {
-          icon = "    󰱒";
+          icon = "   󰱒 ";
           highlight = "RenderMarkdownChecked";
         };
         # -- custom = {
