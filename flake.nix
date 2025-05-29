@@ -1,10 +1,10 @@
 {
-
   outputs =
     {
       nixpkgs,
       home-manager,
       rust-overlay,
+      nixvim,
       self,
       ...
     }@inputs:
@@ -16,6 +16,8 @@
         "steam"
         "obsidian"
       ];
+
+      # Extend pkgs with nixvim
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfreePredicate = (
@@ -49,7 +51,7 @@
       # Home Manager (user) configuration
       homeConfigurations.johan = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit inputs self;
+          inherit inputs self nixvim;
           baseColors = import ./colors/catppuccin-mocha.nix;
           wallpaperPath = import ./wallpaper;
         };
