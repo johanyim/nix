@@ -6,7 +6,7 @@ pkgs.writeShellScriptBin "open_notes" ''
   $options
   "
 
-  options="$\{options//\.md/}"
+  options="''${options//\.md/}"
 
   selection=$(echo "$options" | grep -v "scratchpad" | rofi -dmenu -i -p "Notes: ")
 
@@ -29,6 +29,6 @@ pkgs.writeShellScriptBin "open_notes" ''
   *) ;;
   esac
 
-  ${pkgs.alacritty}/bin/alacritty -e nvim "$HOME/notes/$\{selection//\.md/}.md"
+  ${pkgs.alacritty}/bin/alacritty -e nvim "$HOME/notes/''${selection//\.md/}.md"
 
 ''
