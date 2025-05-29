@@ -19,7 +19,7 @@ pkgs.writeShellScriptBin "open_notes" ''
   	if [[ -f "$HOME/notes/$(date --i).md" ]]; then
   		${pkgs.alacritty}/bin/alacritty -e ${pkgs.neovim}/bin/nvim "$HOME/notes/$(date --i).md"
   	else
-  		${pkgs.alacritty}/bin/alacritty -e nvim -c "put='# $(date --i)'" -c "put=''''" -c "put=''''" -c "normal! 3G" -c 'startinsert' "$HOME/notes/$(date --i).md"
+  		${pkgs.alacritty}/bin/alacritty -e ${pkgs.neovim}/bin/nvim -c "put='# $(date --i)'" -c "put=''''" -c "put=''''" -c "normal! 3G" -c 'startinsert' "$HOME/notes/$(date --i).md"
   	fi
   	exit 0
   	;;
@@ -29,6 +29,6 @@ pkgs.writeShellScriptBin "open_notes" ''
   *) ;;
   esac
 
-  ${pkgs.alacritty}/bin/alacritty -e nvim "$HOME/notes/''${selection//\.md/}.md"
+  ${pkgs.alacritty}/bin/alacritty -e ${pkgs.neovim}/bin/nvim "$HOME/notes/''${selection//\.md/}.md"
 
 ''
