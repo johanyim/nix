@@ -174,6 +174,10 @@ in
         warp_on_change_workspace = 1;
         # warp_on_toggle_special = 1;
       };
+
+      windowrule = [
+        "float, class:floating"
+      ];
     };
   };
 
