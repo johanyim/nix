@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "screenshot-edit" ''
   area=$(${pkgs.slurp}/bin/slurp)
 

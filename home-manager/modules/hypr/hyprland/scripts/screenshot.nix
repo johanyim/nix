@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "screenshot" ''
   # ${pkgs.git}/bin/git restore --staged "$HOME/nix/home-manager"
   #

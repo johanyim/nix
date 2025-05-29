@@ -8,8 +8,10 @@
 let
   rgb = lib.mapAttrs (name: hex: "rgb(${hex})") baseColors;
   screenshot = (import ./scripts/screenshot.nix { inherit pkgs; });
-  screenshot-edit = (import ./scripts/screenshot-edit.nix { inherit pkgs; });
-  logout-menu = (import ./scripts/logout-menu.nix { inherit pkgs baseColors lib; });
+  screenshot_edit = (import ./scripts/screenshot_edit.nix { inherit pkgs; });
+  logout_menu = (import ./scripts/logout_menu.nix { inherit pkgs baseColors lib; });
+  open_notes = (import ./scripts/open_notes.nix { inherit pkgs; });
+  open_scratchpad = (import ./scripts/open_scratchpad.nix { inherit pkgs; });
 in
 {
 
@@ -99,8 +101,12 @@ in
 
         # screenshot
         "$mod SHIFT, S, exec, ${screenshot}/bin/screenshot"
-        "$mod CTRL SHIFT, S, exec, ${screenshot-edit}/bin/screenshot-edit"
-        "$mod, backslash, exec, ${logout-menu}/bin/logout-menu"
+        "$mod CTRL SHIFT, S, exec, ${screenshot_edit}/bin/screenshot-edit"
+
+        # custom functions
+        "$mod, backslash, exec, ${logout_menu}/bin/logout-menu"
+        "$mod, n, exec, ${open_notes}/bin/open_notes"
+        "$mod, s, exec, ${open_scratchpad}/bin/open_scratchpad"
 
         "$mod, 0, togglespecialworkspace"
         "$mod SHIFT, 0, movetoworkspace, special"
