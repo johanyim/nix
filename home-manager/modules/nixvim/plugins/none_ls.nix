@@ -6,7 +6,6 @@
     sources = {
       formatting = {
         shfmt.enable = true;
-        markdownlint.enable = true;
         rustywind.enable = true;
       };
       code_actions = {
@@ -14,7 +13,6 @@
       };
 
       diagnostics = {
-        markdownlint.enable = true;
       };
     };
   };
