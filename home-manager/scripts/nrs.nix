@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "nrs" ''
   # include all but home-manager
   ${pkgs.git}/bin/git --no-pager diff 

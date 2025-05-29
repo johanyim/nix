@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "port_killer" ''
   selection=$(
     ${pkgs.lsof}/bin/lsof -iTCP -sTCP:LISTEN -Pn | 

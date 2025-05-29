@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "hms" ''
   # include all within home manager
   ${pkgs.git}/bin/git --no-pager diff 
