@@ -2,6 +2,7 @@
 {
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
+    # source <(fzf --zsh) works better
+    # enableZshIntegration = true;
   };
 }
