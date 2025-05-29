@@ -10,7 +10,7 @@ pkgs.writeShellScriptBin "open_scratchpad" ''
   	kill "$PID" >/dev/null 2>&1 && exit 0
   fi
 
-  ${pkgs.alacritty}/bin/alacritty --title $INSTANCE_NAME --class "floating" --command "$EDITOR" "$HOME/notes/scratchpad.md" &
+  ${pkgs.alacritty}/bin/alacritty --title $INSTANCE_NAME --command "$EDITOR" "$HOME/notes/scratchpad.md" &
   echo $! >"$PID_PATH"
 
 ''
