@@ -6,7 +6,7 @@ pkgs.writeShellScriptBin "open_scratchpad" ''
   if [[ -f $PID_PATH ]]; then
   	PID=$(cat $PID_PATH)
 
-  	rm -f "$PID"
+  	rm -f "$PID_PATH"
   	kill "$PID" >/dev/null 2>&1 && exit 0
   fi
 
