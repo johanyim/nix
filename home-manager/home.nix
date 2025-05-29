@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  nixvim,
   ...
 }:
 let
@@ -10,7 +11,7 @@ let
   ## import all scripts within the scripts directory
   scriptFiles = builtins.attrNames (builtins.readDir ./scripts);
   # scripts = import ./scripts { inherit pkgs; };
-  scripts = builtins.map (file: import ./scripts/${file} { inherit pkgs inputs; }) scriptFiles;
+  scripts = builtins.map (file: import ./scripts/${file} { inherit pkgs nixvim; }) scriptFiles;
 in
 {
   imports = [

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, nixvim, ... }:
 pkgs.writeShellScriptBin "open_notes" ''
   options=$(ls -1 "$HOME/notes")
   options="Scratchpad
@@ -17,9 +17,9 @@ pkgs.writeShellScriptBin "open_notes" ''
   case "$selection" in
   "Create daily note")
   	if [[ -f "$HOME/notes/$(date --i).md" ]]; then
-  		${pkgs.alacritty}/bin/alacritty -e ${pkgs.neovim}/bin/nvim "$HOME/notes/$(date --i).md"
+  		${pkgs.alacritty}/bin/alacritty -e ${nixvim}/bin/nvim "$HOME/notes/$(date --i).md"
   	else
-  		${pkgs.alacritty}/bin/alacritty -e ${pkgs.neovim}/bin/nvim -c "put='# $(date --i)'" -c "put=''''" -c "put=''''" -c "normal! 3G" -c 'startinsert' "$HOME/notes/$(date --i).md"
+  		${pkgs.alacritty}/bin/alacritty -e ${nixvim}/bin/nvim -c "put='# $(date --i)'" -c "put=''''" -c "put=''''" -c "normal! 3G" -c 'startinsert' "$HOME/notes/$(date --i).md"
   	fi
   	exit 0
   	;;
@@ -29,6 +29,6 @@ pkgs.writeShellScriptBin "open_notes" ''
   *) ;;
   esac
 
-  ${pkgs.alacritty}/bin/alacritty -e ${pkgs.neovim}/bin/nvim "$HOME/notes/''${selection//\.md/}.md"
+  ${pkgs.alacritty}/bin/alacritty -e ${nixvim}/bin/nvim "$HOME/notes/''${selection//\.md/}.md"
 
 ''
