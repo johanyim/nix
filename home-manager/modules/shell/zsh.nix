@@ -17,6 +17,8 @@
     };
     initExtra = ''
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+      eval "$(zoxide init zsh)"
+      source <(${pkgs.fzf}/bin/fzf --zsh)
 
       ZVM_VI_HIGHLIGHT_FOREGROUND=black             
       ZVM_VI_HIGHLIGHT_BACKGROUND=white
@@ -42,8 +44,6 @@
       bindkey -M menuselect 'l' vi-forward-char
       bindkey -M menuselect 'j' vi-down-line-or-history
 
-      eval "$(zoxide init zsh)"
-      source <(${pkgs.fzf}/bin/fzf --zsh)
 
     '';
 
