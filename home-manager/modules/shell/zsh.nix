@@ -15,10 +15,12 @@
       "t" = "tmux a";
       "grep" = "rg";
     };
-    initExtra = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+    initContent = ''
       eval "$(zoxide init zsh)"
       source <(${pkgs.fzf}/bin/fzf --zsh)
+    '';
+    initExtra = ''
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
       ZVM_VI_HIGHLIGHT_FOREGROUND=black             
       ZVM_VI_HIGHLIGHT_BACKGROUND=white
