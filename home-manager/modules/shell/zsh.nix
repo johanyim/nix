@@ -42,11 +42,18 @@
 
     '';
     initExtra = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       eval "$(zoxide init zsh)"
       source <(${pkgs.fzf}/bin/fzf --zsh)
 
     '';
+    plugins = [
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
+
+    ];
 
   };
 
