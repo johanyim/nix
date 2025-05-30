@@ -41,8 +41,8 @@
       bindkey -M menuselect 'j' vi-down-line-or-history
 
     '';
-    # source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     initExtra = ''
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       eval "$(zoxide init zsh)"
       source <(${pkgs.fzf}/bin/fzf --zsh)
 
