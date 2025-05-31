@@ -8,6 +8,14 @@
       configs = true;
       plugins = true;
     };
+    combinePlugins = {
+      enable = true;
+      standalonePlugins = [
+        "conform-nvim"
+      ];
+
+    };
+
   };
 
   programs.nixvim.globals = {

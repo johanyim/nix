@@ -183,7 +183,7 @@ in
       # harpoon
       # plenary-nvim
 
-      rust-vim
+      # rust-vim
       # rust-tools-nvim
       # nvim-lsp-endhints
 
