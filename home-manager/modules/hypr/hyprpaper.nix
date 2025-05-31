@@ -3,6 +3,7 @@ let
   # wallpaper = self + "/wallpaper/pixel-galaxy.png";
   # wallpaper = self + "/wallpaper/jellyfish.jpg";
   wallpaper = self + "/wallpaper/pixel-galaxy-darkened.png";
+  display = "eDP-1";
 in
 {
 
@@ -13,7 +14,7 @@ in
       splash = false;
       preload = [ wallpaper ];
       wallpaper = [
-        "eDP-1,${wallpaper}"
+        "${display},${wallpaper}"
       ];
     };
   };
