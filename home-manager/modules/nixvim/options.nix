@@ -8,12 +8,12 @@
       configs = true;
       plugins = true;
     };
-    # combinePlugins = {
-    #   enable = true;
-    #   standalonePlugins = [
-    #   ];
-    #
-    # };
+    combinePlugins = {
+      enable = true;
+      standalonePlugins = [
+      ];
+
+    };
 
   };
 
