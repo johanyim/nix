@@ -191,7 +191,7 @@ in
 
     extraConfigLua = ''
       -- require('rust.vim').setup({
-        vim.g.rustfmt_autosave = 1
+        -- vim.g.rustfmt_autosave = 1
       -- }})
     '';
 
