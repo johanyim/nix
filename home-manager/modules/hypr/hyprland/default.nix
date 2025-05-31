@@ -1,4 +1,5 @@
 {
+  self,
   pkgs,
   lib,
   baseColors,
@@ -12,6 +13,7 @@ let
   logout_menu = (import ./scripts/logout_menu.nix { inherit pkgs baseColors lib; });
   open_notes = (import ./scripts/open_notes.nix { inherit pkgs; });
   open_scratchpad = (import ./scripts/open_scratchpad.nix { inherit pkgs; });
+  change_wallpaper = (import ./scripts/change_wallpaper.nix { inherit pkgs self; });
 in
 {
 
@@ -107,6 +109,7 @@ in
         "$mod, backslash, exec, ${logout_menu}/bin/logout-menu"
         "$mod, n, exec, ${open_notes}/bin/open_notes"
         "$mod, s, exec, ${open_scratchpad}/bin/open_scratchpad"
+        "$mod SHIFT, w, exec, ${change_wallpaper}/bin/change_wallpaper"
 
         "$mod, 0, togglespecialworkspace"
         "$mod SHIFT, 0, movetoworkspace, special"
