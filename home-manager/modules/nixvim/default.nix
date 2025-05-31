@@ -27,6 +27,7 @@ in
     plugins.nvim-autopairs.enable = true;
     plugins.lsp-lines.enable = true;
     plugins.web-devicons.enable = true;
+    plugins.hardtime.enable = true;
 
     plugins.tmux-navigator = {
       enable = true;
