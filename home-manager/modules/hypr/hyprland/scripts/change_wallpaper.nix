@@ -4,7 +4,7 @@ let
 in
 pkgs.writeShellScriptBin "change_wallpaper" ''
   selection=$(ls -1 ${self + "/wallpaper/"} | rofi -dmenu)
-  path="''${self + "/wallpaper/"}$selection"
+  path="${self + "/wallpaper/"}$selection"
   notify-send "Wallpaper changed to $selection"
   hyprctl hyprpaper preload $path
   hyprctl hyprpaper wallpaper "${display},''${path}"
