@@ -3,9 +3,9 @@ let
   display = "eDP-1";
 in
 pkgs.writeShellScriptBin "change_wallpaper" ''
-  selection=${self + "/wallpaper/"}$(ls -1 ${self + "/wallpaper/"} | rofi -dmenu)
-
-  notify-send "$selection"
-  hyprctl hyprpaper preload $selection
-  hyprctl hyprpaper wallpaper "${display},''${selection}"
+  selection=$(ls -1 ${self + "/wallpaper/"} | rofi -dmenu)
+  path="''${self + "/wallpaper/"}$selection"
+  notify-send "Wallpaper changed to $selection"
+  hyprctl hyprpaper preload $path
+  hyprctl hyprpaper wallpaper "${display},''${path}"
 ''
