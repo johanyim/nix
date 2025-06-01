@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  nixvim,
   ...
 }:
 let
@@ -50,8 +49,6 @@ in
         bluetuith
 
         mpv
-
-        nixvim
 
       ]
       ++ scripts;
