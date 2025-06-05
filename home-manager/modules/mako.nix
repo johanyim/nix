@@ -14,7 +14,7 @@ in
       width = 500;
       height = 400;
       default-timeout = 20000;
-      font = "Departure Mono 12";
+      font = "Departure Mono 16";
 
       "urgency=low" = {
         background-color = "${hex.mantle}";
@@ -27,8 +27,8 @@ in
       };
 
       "urgency=critical" = {
-        border-color = " ${hex.red}";
-        background-color = " ${hex.mantle}";
+        border-color = "${hex.red}";
+        background-color = "${hex.mantle}";
       };
     };
   };
