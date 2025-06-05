@@ -68,7 +68,8 @@ in
       ];
 
       decoration = {
-        rounding = 8;
+        # rounding = 8;
+        rounding = 0;
 
         shadow = {
           enabled = false;
