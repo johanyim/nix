@@ -17,17 +17,17 @@ in
       font = "Departure Mono 12";
 
       "urgency=low" = {
-        background-color = "${hex.mantle}80";
-        border-color = "${hex.green}80";
+        background-color = "${hex.mantle}";
+        border-color = "${hex.green}";
       };
 
       "urgency=normal" = {
-        background-color = "${hex.mantle}80";
-        border-color = "${hex.lavender}80";
+        background-color = "${hex.mantle}";
+        border-color = "${hex.lavender}";
       };
 
       "urgency=critical" = {
-        border-color = " ${hex.red}80";
+        border-color = " ${hex.red}";
         background-color = " ${hex.mantle}";
       };
     };
