@@ -51,7 +51,7 @@
       # Home Manager (user) configuration
       homeConfigurations.johan = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {
-          inherit inputs self nixvim;
+          inherit inputs self;
           baseColors = import ./colors/catppuccin-mocha.nix;
           wallpaperPath = import ./wallpaper;
         };
