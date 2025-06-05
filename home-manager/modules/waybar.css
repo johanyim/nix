@@ -48,10 +48,10 @@ box#state,
 #clock
 {
     background: @crust;
-    /* border: 2px solid @surface2; */
-    border: 2px solid @crust;
+    border: 2px solid @surface2;
+    /* border: 2px solid @crust; */
     padding: 0 8px;
-    border-radius: 0px
+    border-radius: 8px
 }
 
 
@@ -80,8 +80,8 @@ box#state,
 /* } */
 
 window#waybar>box {
-    /* margin: 4px 8px 0 8px; */
-    margin: 0;
+    margin: 4px 8px 0 8px;
+    /* margin: 0; */
 }
 
 
