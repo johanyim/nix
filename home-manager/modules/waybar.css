@@ -102,6 +102,10 @@ window#waybar {
     color: @lavender;
     border-radius: 0px;
 }
+#workspaces button:hover {
+    background: @mantle;
+    border-radius: 0px;
+}
 
 #workspaces button.empty {
     color: @surface0;
