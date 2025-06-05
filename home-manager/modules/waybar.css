@@ -100,6 +100,7 @@ window#waybar {
 #workspaces button.active {
     background: @base;
     color: @lavender;
+    border-radius: 0px;
 }
 
 #workspaces button.empty {
