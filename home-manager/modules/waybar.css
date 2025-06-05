@@ -48,10 +48,10 @@ box#state,
 #clock
 {
     background: @crust;
-    border: 2px solid @surface2;
-    /* border: 2px solid @crust; */
+    /* border: 2px solid @surface2; */
+    border: 2px solid @crust;
     padding: 0 8px;
-    border-radius: 8px
+    border-radius: 0px
 }
 
 
@@ -100,7 +100,6 @@ window#waybar {
 #workspaces button.active {
     background: @base;
     color: @lavender;
-    border-radius: 8px;
 }
 
 #workspaces button.empty {
@@ -188,7 +187,6 @@ window#waybar {
 
 #battery {
     color: @lavender;
-    /* border-radius: 8px; */
 }
 
 #battery.warning:not(.charging) {
