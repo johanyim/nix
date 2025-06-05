@@ -80,7 +80,8 @@ box#state,
 /* } */
 
 window#waybar>box {
-    margin: 4px 8px 0 8px;
+    /* margin: 4px 8px 0 8px; */
+    margin: 0;
 }
 
 
@@ -102,7 +103,6 @@ window#waybar {
     color: @lavender;
     border-radius: 0px;
 }
-#workspaces button.active:hover, 
 #workspaces button:hover {
     background: @mantle;
     border-radius: 0px;
