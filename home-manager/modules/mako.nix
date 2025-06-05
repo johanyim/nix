@@ -8,8 +8,6 @@ in
     settings = {
       outer-margin = "8,0";
       anchor = "bottom-right";
-      background-color = "${hex.mantle}80";
-      border-color = "${hex.lavender}80";
       border-size = 4;
       border-radius = 8;
       margin = "8";
@@ -18,7 +16,12 @@ in
       default-timeout = 20000;
       font = "Departure Mono 12";
 
-      "urgency=critical" = {
+      "urgency=normal" = {
+        background-color = "${hex.mantle}80";
+        border-color = "${hex.lavender}80";
+      };
+
+      "urgency=high" = {
         border-color = " ${hex.red}80";
         background-color = " ${hex.mantle}";
       };
