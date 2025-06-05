@@ -10,11 +10,11 @@ in
       anchor = "bottom-right";
       background-color = "${hex.mantle}80";
       border-color = "${hex.lavender}80";
-      border-size = 2;
+      border-size = 4;
       border-radius = 8;
       margin = "8";
-      width = 400;
-      height = 200;
+      width = 500;
+      height = 400;
       default-timeout = 20000;
       font = "Departure Mono 12";
     };
