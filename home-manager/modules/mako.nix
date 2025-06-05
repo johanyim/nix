@@ -16,12 +16,17 @@ in
       default-timeout = 20000;
       font = "Departure Mono 12";
 
+      "urgency=low" = {
+        background-color = "${hex.mantle}80";
+        border-color = "${hex.green}80";
+      };
+
       "urgency=normal" = {
         background-color = "${hex.mantle}80";
         border-color = "${hex.lavender}80";
       };
 
-      "urgency=high" = {
+      "urgency=critical" = {
         border-color = " ${hex.red}80";
         background-color = " ${hex.mantle}";
       };
