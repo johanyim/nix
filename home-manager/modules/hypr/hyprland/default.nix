@@ -41,7 +41,7 @@ in
       "$menu" = "rofi";
 
       general = {
-        border_size = 0;
+        border_size = 2;
         "col.active_border" = rgb.overlay0;
         "col.inactive_border" = rgb.surface0;
         gaps_out = 8;
@@ -68,8 +68,7 @@ in
       ];
 
       decoration = {
-        # rounding = 8;
-        rounding = 0;
+        rounding = 8;
 
         shadow = {
           enabled = false;
