@@ -22,7 +22,7 @@ pkgs.writeShellScriptBin "hms" ''
     )
     
     ${pkgs.git}/bin/git commit -m "$COMMIT_MESSAGE"
-    ${pkgs.libnotify}/bin/notify-send "Generation $GENERATION" "Home-manager"
+    ${pkgs.libnotify}/bin/notify-send -u low "Generation $GENERATION" "Home-manager"
   fi
 
 ''

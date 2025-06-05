@@ -23,7 +23,7 @@ pkgs.writeShellScriptBin "nrs" ''
 
     
     ${pkgs.git}/bin/git commit -m "$COMMIT_MESSAGE"
-    ${pkgs.libnotify}/bin/notify-send "Generation $GENERATION" "NixOS"
+    ${pkgs.libnotify}/bin/notify-send -u low "Generation $GENERATION" "NixOS"
   fi
 
 ''
