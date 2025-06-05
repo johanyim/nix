@@ -4,21 +4,9 @@ let
     export DISPLAY=:0
     export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
+    sudo -u "johan" ${pkgs.libnotify}/bin/notify-send "AC is plugged in"
 
-    ${pkgs.dbus}/bin/dbus-send \
-    --session \
-    --dest=org.freedesktop.Notifications \
-    --type=method_call \
-    /org/freedesktop/Notifications \
-    org.freedesktop.Notifications.Notify \
-    string:"udev" \
-    uint32:0 \
-    string:"dialog-information" \
-    string:"Charger status changed" \
-    string:"AC adapter plugged or unplugged." \
-    array:string: \
-    dict:string:string: \
-    int32:5000
+
   '';
 in
 {
