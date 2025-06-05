@@ -17,6 +17,12 @@ in
       height = 400;
       default-timeout = 20000;
       font = "Departure Mono 12";
+
+      "urgency=high" = {
+        border-color = " ${hex.red}80";
+        background-color = " ${hex.mantle}";
+
+      };
     };
   };
 
