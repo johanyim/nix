@@ -1,8 +1,10 @@
 { pkgs, ... }:
 let
   thing = pkgs.writeShellScriptBin "thing" ''
+    touch /home/johan/$(date --i=ns)
     export DISPLAY=:0
     export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
 
     ${pkgs.dbus}/bin/dbus-send \
     --session \
