@@ -48,7 +48,7 @@ box#state,
 #clock
 {
     background: @crust;
-    border: 2px solid @surface2;
+    border: 0px solid @surface2;
     padding: 0 8px;
     border-radius: 0px
 }
