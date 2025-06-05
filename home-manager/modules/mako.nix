@@ -8,25 +8,27 @@ in
     settings = {
       outer-margin = "8,0";
       anchor = "bottom-right";
-      border-size = 4;
+      border-size = 2;
       border-radius = 8;
       margin = "8";
       width = 500;
       height = 400;
-      default-timeout = 20000;
-      font = "Departure Mono 16";
+      font = "Departure Mono 14";
 
       "urgency=low" = {
-        background-color = "${hex.mantle}";
-        border-color = "${hex.green}";
+        default-timeout = 5000;
+        background-color = "${hex.mantle}80";
+        border-color = "${hex.green}80";
       };
 
       "urgency=normal" = {
-        background-color = "${hex.mantle}";
-        border-color = "${hex.lavender}";
+        default-timeout = 20000;
+        background-color = "${hex.mantle}80";
+        border-color = "${hex.lavender}80";
       };
 
       "urgency=critical" = {
+        default-timeout = 60000;
         border-color = "${hex.red}";
         background-color = "${hex.mantle}";
       };
