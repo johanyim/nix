@@ -6,5 +6,6 @@
     ./network.nix
     ./sound.nix
     ./tty.nix
+    ./udev.nix
   ];
 }
