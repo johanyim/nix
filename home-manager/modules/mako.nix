@@ -11,7 +11,7 @@ in
       border-size = 2;
       border-radius = 8;
       margin = "8";
-      width = 500;
+      width = 300;
       height = 400;
       font = "Departure Mono 14";
 
