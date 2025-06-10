@@ -8,7 +8,10 @@
 
   networking.networkmanager.enable = true;
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 51413 ];
+  networking.firewall.allowedTCPPorts = [
+    51413
+    22
+  ];
   networking.firewall.allowedUDPPorts = [ 51413 ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
