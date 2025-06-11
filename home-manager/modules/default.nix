@@ -13,5 +13,6 @@
     ./tmux.nix
     ./waybar.nix
     ./xdg.nix
+    ./yazi.nix
   ];
 }
