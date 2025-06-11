@@ -12,7 +12,7 @@
     shellAliases = {
       "ls" = "eza -al";
       "cd" = "z";
-      "t" = "tmux a";
+      "t" = "tmux a || tmux new";
       "grep" = "rg";
     };
     initContent = ''
