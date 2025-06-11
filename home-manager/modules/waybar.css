@@ -101,11 +101,11 @@ window#waybar {
 #workspaces button.active {
     background: @base;
     color: @lavender;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 #workspaces button:hover {
     background: @mantle;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 #workspaces button.empty {
