@@ -12,7 +12,6 @@
     ./rofi.nix
     ./tmux.nix
     ./waybar.nix
-    ./wezterm.nix
     ./xdg.nix
     ./yazi.nix
   ];
