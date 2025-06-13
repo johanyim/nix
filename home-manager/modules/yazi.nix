@@ -8,8 +8,9 @@
 let
   hex = lib.mapAttrs (name: hex: "#${hex}") baseColors;
 
+  # TODO: make this into nix, or at least with interpolated colors
   config = builtins.fromTOML ''
-    [mgr]
+[mgr]
 cwd = { fg = "#94e2d5" }
 
 hovered         = { fg = "#1e1e2e", bg = "#b4befe" }
