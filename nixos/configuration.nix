@@ -135,4 +135,9 @@
     "flakes"
   ];
 
+  nix.settings.trusted-users = [
+    "root"
+    "johan"
+  ];
+
 }
