@@ -98,6 +98,8 @@
       "networkmanager"
       "wheel"
       "video"
+      "input"
+      "lp" # for bluetooth
     ];
 
     packages = with pkgs; [
