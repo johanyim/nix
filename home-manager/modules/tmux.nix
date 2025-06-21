@@ -197,7 +197,7 @@ in
         ## ============= CUSTOM COMMANDS =================
 
         # Run the last command of the last pane
-        bind-key Enter run-shell '
+        bind-key 'C-x' run-shell '
           original_pane=#{pane_id} &&
           tmux last-pane &&
           tmux send-keys C-c &&
