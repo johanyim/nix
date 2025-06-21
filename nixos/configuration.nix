@@ -99,7 +99,7 @@
       "wheel"
       "video"
       "input"
-      # "lp" # for bluetooth
+      "lp" # for bluetooth
     ];
 
     packages = with pkgs; [
