@@ -37,6 +37,10 @@ in
         obsidian
         wl-clipboard
 
+        cargo-watch
+        cargo-expand
+        cargo-machete
+
         # screenshots
         grim
         slurp
@@ -50,6 +54,9 @@ in
         bluetuith
 
         mpv
+
+        redis
+        # valkey
 
       ]
       ++ scripts;
