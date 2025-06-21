@@ -37,9 +37,13 @@ in
         obsidian
         wl-clipboard
 
+        ## RUST
+        # rest is found in rust overlay
         cargo-watch
         cargo-expand
         cargo-machete
+        openssl
+        pkg-config
 
         # screenshots
         grim
