@@ -15,6 +15,7 @@
       unfree = [
         "steam"
         "obsidian"
+        "vscode"
       ];
 
       # Extend pkgs with nixvim

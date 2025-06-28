@@ -62,6 +62,8 @@ in
         redis
         # valkey
 
+        vscode
+
       ]
       ++ scripts;
   };
