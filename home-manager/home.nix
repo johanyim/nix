@@ -68,6 +68,8 @@ in
       ++ scripts;
   };
 
+  services.kdeconnect.enable = true;
+
   catppuccin.flavor = "mocha";
   catppuccin.gtk = {
     enable = true;
