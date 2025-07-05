@@ -11,6 +11,21 @@
   networking.firewall.allowedTCPPorts = [
     51413
     22
+
+  ];
+
+  networking.firewall.allowedTCPPortRanges = [
+    {
+      from = 1714;
+      to = 1764;
+    } # KDE Connect
+  ];
+
+  networking.firewall.allowedUDPPortRanges = [
+    {
+      from = 1714;
+      to = 1764;
+    } # KDE Connect
   ];
   networking.firewall.allowedUDPPorts = [ 51413 ];
   # Or disable the firewall altogether.
