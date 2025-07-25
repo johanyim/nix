@@ -32,6 +32,14 @@
           "zsh"
         ];
       };
+
+      erlangls = {
+        enable = true;
+        filetypes = [
+          "erl"
+        ];
+      };
+
     };
   };
 
