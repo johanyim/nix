@@ -40,6 +40,7 @@
         filetypes = [
           "erlang"
         ];
+
       };
 
     };
