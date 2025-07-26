@@ -2,6 +2,13 @@
 {
   programs.nixvim.plugins.lsp-format.enable = true;
 
+  programs.nixvim.lsp.servers = {
+    erlangls = {
+      enable = true;
+    };
+
+  };
+
   programs.nixvim.plugins.lsp = {
     enable = true;
     inlayHints = true;
@@ -33,14 +40,6 @@
           "bash"
           "zsh"
         ];
-      };
-
-      erlangls = {
-        enable = true;
-        filetypes = [
-          "erlang"
-        ];
-
       };
 
     };
