@@ -14,7 +14,7 @@
       core.pager = "bat --decorations=never";
       diff.algorithm = "histogram";
       merge.conflictstyle = "zdiff3";
-      # init.defaultBranch = "main";
+      init.defaultBranch = "master";
     };
     aliases = {
       "lg1" =
