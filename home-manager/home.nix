@@ -62,7 +62,7 @@ in
         redis
         # valkey
 
-        vscode
+        erlang-ls
 
       ]
       ++ scripts;
