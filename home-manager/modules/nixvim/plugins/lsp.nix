@@ -38,7 +38,7 @@
       erlangls = {
         enable = true;
         filetypes = [
-          "erl"
+          "erlang"
         ];
       };
 

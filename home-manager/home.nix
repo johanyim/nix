@@ -63,6 +63,7 @@ in
         # valkey
 
         erlang-ls
+        erlang_28
 
       ]
       ++ scripts;
