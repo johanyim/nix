@@ -2,8 +2,8 @@
 {
   programs.nixvim.plugins.treesitter = {
     enable = true;
-    # folding = true;
-    nixGrammars = false;
+    folding = true;
+    # nixGrammars = false;
     settings = {
       ensure_installed = [
         "rust"
