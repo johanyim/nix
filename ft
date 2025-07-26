@@ -1,0 +1,84 @@
+
+path+="$HOME/.zsh/plugins/vi-mode"
+fpath+="$HOME/.zsh/plugins/vi-mode"
+
+autoload -U compinit && compinit
+if [[ -f "$HOME/.zsh/plugins/vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh" ]]; then
+  source "$HOME/.zsh/plugins/vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
+fi
+# History options should be set in .zshrc and after oh-my-zsh sourcing.
+# See https://github.com/nix-community/home-manager/issues/177.
+HISTSIZE="10000"
+SAVEHIST="10000"
+
+HISTFILE="$HOME/.zsh_history"
+mkdir -p "$(dirname "$HISTFILE")"
+
+setopt HIST_FCNTL_LOCK
+unsetopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+unsetopt HIST_IGNORE_ALL_DUPS
+unsetopt HIST_SAVE_NO_DUPS
+unsetopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+unsetopt HIST_EXPIRE_DUPS_FIRST
+unsetopt SHARE_HISTORY
+unsetopt EXTENDED_HISTORY
+
+
+if [[ $options[zle] = on ]]; then
+  eval "$(/nix/store/fhl0i3nljnqjayhr427hkw7bzn140zi5-fzf-0.62.0/bin/fzf --zsh)"
+fi
+
+
+ZVM_VI_HIGHLIGHT_FOREGROUND=black             
+ZVM_VI_HIGHLIGHT_BACKGROUND=white
+ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold    
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+
+# show hidden files
+setopt globdots
+
+# use the vi navigation keys in menu completion
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+
+eval "$(zoxide init zsh)"
+source <(/nix/store/fhl0i3nljnqjayhr427hkw7bzn140zi5-fzf-0.62.0/bin/fzf --zsh)
+
+
+function yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+if [[ $TERM != "dumb" ]]; then
+  eval "$(/nix/store/z1p83lvn2nj8y9864kcqab0nfcz37jah-starship-1.23.0/bin/starship init zsh)"
+fi
+
+eval "$(/nix/store/cssrdy0w7cy3zmb12l8mj48f0477c2sh-direnv-2.36.0/bin/direnv hook zsh)"
+
+alias -- cd=z
+alias -- grep=rg
+alias -- ls='eza -al'
+alias -- t='tmux a || tmux new'
+source /nix/store/3q6wqx3hj73v31xqyl704dk49mkkslla-zsh-syntax-highlighting-0.8.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=()
+
+

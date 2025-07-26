@@ -19,5 +19,4 @@
       plugins.treesitter.nixvimInjections = true;
     };
   };
-
 }
