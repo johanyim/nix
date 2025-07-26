@@ -6,6 +6,7 @@
     enable = true;
     inlayHints = true;
     servers = {
+
       nixd = {
         enable = true;
         filetypes = [ "nix" ];
@@ -15,6 +16,7 @@
           };
         };
       };
+
       emmet_language_server = {
         enable = true;
         filetypes = [
