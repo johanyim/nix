@@ -9,6 +9,7 @@
     # enableCompletions = true;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = true;
+    history.share = false;
     shellAliases = {
       "ls" = "eza -al";
       "cd" = "z";
