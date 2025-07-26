@@ -205,7 +205,7 @@ in
           tmux select-pane -t "$original_pane"
         '
 
-        bind-key 'C-Enter' run-shell '
+        bind-key Enter run-shell '
           original_pane=#{pane_id} &&
           tmux last-pane &&
           tmux send-keys C-c &&

@@ -8,7 +8,7 @@
         "rust"
         "markdown"
         "nix"
-        "erlang"
+        # "erlang"
       ];
       highlight.enable = true;
       indent.enable = true;
